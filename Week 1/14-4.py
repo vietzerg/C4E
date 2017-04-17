@@ -1,4 +1,6 @@
 from turtle import *
+
+import math
 '''
 import random
 
