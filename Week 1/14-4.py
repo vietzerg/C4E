@@ -1,6 +1,9 @@
 from turtle import *
 
-import math $asdasd
+import math
+
+# Added new des
+
 '''
 import random
 
