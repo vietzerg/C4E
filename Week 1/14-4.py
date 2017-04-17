@@ -1,6 +1,6 @@
 from turtle import *
 
-import math
+import math $asdasd
 '''
 import random
 
