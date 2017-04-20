@@ -1,12 +1,28 @@
 import itertools as ite
 
+##astr = 'aabbaa'
+##z = set('aaaa')
+##print (astr[0:int((len(astr)/2))])
+##print (check_symmetry(astr))
+
+# CHECK IF THE STRING IS SYMMETRIC (RIGHT-LEFT FLIP-ABLE)
+def check_symmetry(string):
+    if len(string) % 2 == 0:
+        if len(set(string[0:int((len(string)/2))])) == 1 and len(set(string[int((len(string)/2)):])) == 1:
+            return True
+        else:
+            return False
+    else:
+        return False
+
+#print (check_symmetry(astr))
+
 def caser(length):
     digits = range(10)
     results = []
     for i in range(1, length-1):
         chain = i*"o" + (length-i)*"x"
         permu = ite.permutations(chain)
-        #permu_str = []
         for p in list(set(permu)):
             p_str = "".join(list(p))
             if p_str.find('xx') != -1:
@@ -14,32 +30,30 @@ def caser(length):
 
     count = 0
     counts = []
-    counter_digits_combo_test = []
+    repeat_cases = []
     for result in results:
         number_of_o = result.count('o')
         for digit in digits:
-            first_lvl_replace = result.replace('x', str(digit))
+            all_x_replace = result.replace('x', str(digit))
             
             counter_digits = list(digits)
             counter_digits.remove(digit)
             counter_digits_combo = list(ite.product(counter_digits, repeat = number_of_o))
-            counter_digits_combo_test.append(counter_digits_combo)
             for a_combo in counter_digits_combo:
-                prepare_for_replace = first_lvl_replace
+                prepare_for_replace = all_x_replace
                 for counter_digit in list(a_combo):
                     prepare_for_replace = prepare_for_replace.replace('o',str(counter_digit),1)
+                if check_symmetry(prepare_for_replace):
+                    repeat_cases.append(prepare_for_replace)
                 counts.append(prepare_for_replace)
-##            for counter_digit in counter_digits:
-##                second_lvl_replace = first_lvl_replace.replace('o', str(counter_digit))
-##                counts.append(second_lvl_replace)
-        
+                
 
-    return len(counts)
+    return len(set(counts)), (repeat_cases)
 
 #print((caser(5)))
 ##print((caser(5)[1]))
 ##print((caser(5)[2]))
-print (caser(4))
+print (caser(5))
 
 ##dig = list(range(10))
 ##asd = 5
