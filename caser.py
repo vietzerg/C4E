@@ -2,24 +2,43 @@ import itertools as ite
 
 def caser(length):
     digits = range(10)
-    result = []
+    results = []
     for i in range(1, length-1):
-        str_o, str_x = i*"o", (length-i)*"x"
-        #print (str_o)
-        #print (str_x)
-        #chain = ite.chain(str_o, str_x)
-        chain = str_o + str_x
+        chain = i*"o" + (length-i)*"x"
         permu = ite.permutations(chain)
-        permu_str = []
+        #permu_str = []
         for p in list(set(permu)):
             p_str = "".join(list(p))
             if p_str.find('xx') != -1:
-                permu_str.append(p_str)
-##        permu_str = [ "".join(list(p)) for p in list(set(permu)) ]
-##        for stri in permu_str:
-##            if stri.find("xx") == -1:
-##                permu_str.remove(stri)
-        result.append(permu_str)
-    return result
-print((caser(5)[0]))
-print((caser(5)[1]))
+                results.append(p_str)
+
+    count = 0
+    counts = []
+    for result in results:
+        for digit in digits:
+            first_lvl_replace = result.replace('x', str(digit))
+            
+            counter_digits = list(digits)
+            counter_digits.remove(digit)
+            for counter_digit in counter_digits:
+                second_lvl_replace = first_lvl_replace.replace('o', str(counter_digit))
+                counts.append(second_lvl_replace)
+        
+    #return results
+    return len(counts), results
+
+#print((caser(5)))
+##print((caser(5)[1]))
+##print((caser(5)[2]))
+print (caser(4))
+
+##dig = list(range(10))
+##asd = 5
+##dig.remove(asd)
+##print (dig)
+
+##stringer = 'xxxoox'
+##digg = range(5)
+##for i in digg:
+##    new = stringer.replace('x',str(i))
+##    print (new)
