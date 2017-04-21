@@ -20,7 +20,7 @@ def check_symmetry(string):
 def caser(length):
     digits = range(10)
     results = []
-    for i in range(1, length-1):
+    for i in range(0, length-1):
         chain = i*"o" + (length-i)*"x"
         permu = ite.permutations(chain)
         for p in list(set(permu)):
@@ -34,13 +34,13 @@ def caser(length):
     for result in results:
         number_of_o = result.count('o')
         for digit in digits:
-            all_x_replace = result.replace('x', str(digit))
+            #all_x_replace = result.replace('x', str(digit))
             
             counter_digits = list(digits)
             counter_digits.remove(digit)
             counter_digits_combo = list(ite.product(counter_digits, repeat = number_of_o))
             for a_combo in counter_digits_combo:
-                prepare_for_replace = all_x_replace
+                prepare_for_replace = result.replace('x', str(digit))
                 for counter_digit in list(a_combo):
                     prepare_for_replace = prepare_for_replace.replace('o',str(counter_digit),1)
                 if check_symmetry(prepare_for_replace):
@@ -48,12 +48,12 @@ def caser(length):
                 counts.append(prepare_for_replace)
                 
 
-    return len(set(counts)), (repeat_cases)
+    return len(set(counts)), (counts)
 
 #print((caser(5)))
 ##print((caser(5)[1]))
 ##print((caser(5)[2]))
-print (caser(5))
+print (caser(4))
 
 ##dig = list(range(10))
 ##asd = 5
