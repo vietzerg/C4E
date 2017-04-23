@@ -88,7 +88,7 @@ def caser(length):
                 for counter_digit in list(a_combo):
                     prepare_for_replace = prepare_for_replace.replace('o',str(counter_digit),1)
                 counts.append(prepare_for_replace)
-    return (set(counts))
+    return len(set(counts))
                     
 ##                if check_symmetry(prepare_for_replace):
 ##                    repeat_cases_count += 1
