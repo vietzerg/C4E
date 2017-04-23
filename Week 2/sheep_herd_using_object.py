@@ -8,6 +8,7 @@ Created on Sun Apr 23 10:23:54 2017
 import random
 
 # CREATE AN OBJECT FOR SHEEPS, WHICH HAS KEYS AND VALUES TO KEEP TRACK OF THE SHEEP HERD
+# THERE IS A BUG IN LINE 17, WHERE randrange() DOES NOT ALLOW FOR EQUAL start AND stop VALUES
 
 def create_sheep_herd():
     name = input("Hello, what's your name? ")
