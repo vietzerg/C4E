@@ -8,13 +8,16 @@ Created on Sun Apr 23 10:23:54 2017
 import random
 
 # CREATE AN OBJECT FOR SHEEPS, WHICH HAS KEYS AND VALUES TO KEEP TRACK OF THE SHEEP HERD
-# THERE IS A BUG IN LINE 17, WHERE randrange() DOES NOT ALLOW FOR EQUAL start AND stop VALUES
+# (1) THERE IS A BUG IN LINE 17, WHERE randrange() DOES NOT ALLOW FOR EQUAL start AND stop VALUES
+# 4/27/2017: I CHANGED THE randrange() TO randint() AND CHECKED IF IT WORKED. YEAH AND IT WORKED! I WAS A DUMB FOR NOT INCREMENTING THE max_size BY 1 SO THAT randrange() WILL INCLUDE THE
+# max_size VALUE !!!
+# BUG (1) RESOLVED.
 
 def create_sheep_herd():
     name = input("Hello, what's your name? ")
     many = int(input("How many sheeps do you want to have? "))
     max_size = int(input("How big is the biggest sheep? "))
-    sheep_herd_created = dict(sheep_size = [ random.randrange(1,max_size) for i in range(many) ], month = 0, owner = name)
+    sheep_herd_created = dict(sheep_size = [ random.randrange(1,max_size+1) for i in range(many) ], month = 0, owner = name)
     print ("\nHello, {}, your sheep herd has been generated as follows\n".format(name),sheep_herd_created)
     return sheep_herd_created
 
@@ -52,5 +55,6 @@ shear_sheeps(sheep_herd)
 grow(sheep_herd)
 grow(sheep_herd)
 grow(sheep_herd)
+shear_sheeps(sheep_herd)
 sell_sheeps(sheep_herd)
 print (sheep_herd)
