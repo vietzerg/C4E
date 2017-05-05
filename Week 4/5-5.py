@@ -105,29 +105,27 @@ def testing_input(matrix):
             
         
         # IN CASE THE NEW CHAR POSITION IS EQUAL TO THE BOX POSITION
+        # 5/5/2017: I'M TRYING TO FIX THE BUG. PUSHING THE BOX TO THE LEFTMOST MAKES THE BOX APPEAR ON THE RIGHTMOST SIDE!
         if new_char_pos == box_pos:
-            try:
-                if where_char_come_from(char_pos, box_pos) == "up":
-                    new_box_pos = (box_pos[0]+1,box_pos[1])
-                    matrix[new_box_pos[0]][new_box_pos[1]] = "B"
-                elif where_char_come_from(char_pos, box_pos) == "down":
-                    new_box_pos = (box_pos[0]-1,box_pos[1])
-                    matrix[new_box_pos[0]][new_box_pos[1]] = "B"
-                elif where_char_come_from(char_pos, box_pos) == "left":
-                    new_box_pos = (box_pos[0],box_pos[1]+1)
-                    matrix[new_box_pos[0]][new_box_pos[1]] = "B"
-                elif where_char_come_from(char_pos, box_pos) == "right":
-                    new_box_pos = (box_pos[0],box_pos[1]-1)
-                    matrix[new_box_pos[0]][new_box_pos[1]] = "B"
-            except Exception as exp:
+            if where_char_come_from(char_pos, box_pos) == "up":
+                new_box_pos = (box_pos[0]+1,box_pos[1])
+            elif where_char_come_from(char_pos, box_pos) == "down":
+                new_box_pos = (box_pos[0]-1,box_pos[1])
+            elif where_char_come_from(char_pos, box_pos) == "left":
+                new_box_pos = (box_pos[0],box_pos[1]+1)
+            elif where_char_come_from(char_pos, box_pos) == "right":
+                new_box_pos = (box_pos[0],box_pos[1]-1)
+            if new_box_pos[0] >= len(matrix) or new_box_pos[0] < 0 or new_box_pos[1] >= len(matrix) or new_box_pos[1] < 0:
                 print ("Can't move this box!")
-                new_char_pos = char_pos        
+                new_char_pos = char_pos
+            else:
+                matrix[new_box_pos[0]][new_box_pos[1]] = "B"
         
         
         # TRY TO MOVE THE CHARACTER, JUST IN CASE HE MOVES TO THE BORDER        
         try:
-            matrix[new_char_pos[0]][new_char_pos[1]] = "C" 
             matrix[char_pos[0]][char_pos[1]] = "-"                       #replacing the old char position with "-"
+            matrix[new_char_pos[0]][new_char_pos[1]] = "C"
         except Exception:
             new_char_pos = char_pos
           
