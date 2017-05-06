@@ -6,13 +6,11 @@ Created on Fri May  5 20:11:30 2017
 """
 
 # 6/5/2017 BUGS:
-# BUG WHEN TRYING TO MOVE CHARACTER TO THE SIDES OF THE MAP (THE SAME BEHAVIOR AS THE PREVIOUS BOX-SIDES BUG)
-# BUG WHEN MOVING THE CHARACTER ACROSS THE S POINT, AFTER WHICH THE S POINT BECOMES "-"
+# SO FAR NO BUGS FOUND, HAHA!
 
 
 import pprint
 import random
-import itertools
 
 #matrix = [[0,1,2,3],
 #          [4,5,6,7],
@@ -106,7 +104,6 @@ def testing_input(matrix):
             
         
         # IN CASE THE NEW CHAR POSITION IS EQUAL TO THE BOX POSITION
-        # 5/5/2017: I'M TRYING TO FIX THE BUG. PUSHING THE BOX TO THE LEFTMOST MAKES THE BOX APPEAR ON THE RIGHTMOST SIDE!
         if new_char_pos == box_pos:
             if where_char_come_from(char_pos, box_pos) == "up":
                 new_box_pos = (box_pos[0]+1,box_pos[1])
@@ -123,14 +120,21 @@ def testing_input(matrix):
                 matrix[new_box_pos[0]][new_box_pos[1]] = "B"
         
         
-        # TRY TO MOVE THE CHARACTER, JUST IN CASE HE MOVES TO THE BORDER        
-        try:
-            matrix[char_pos[0]][char_pos[1]] = "-"                       #replacing the old char position with "-"
-            matrix[new_char_pos[0]][new_char_pos[1]] = "C"
-        except Exception:
+        # IN CASE CHAR MOVES ACROSS THE STORAGE POINT
+        if char_pos == storage_pos:
+            matrix[char_pos[0]][char_pos[1]] = "S"
+        else:
+            matrix[char_pos[0]][char_pos[1]] = "-"
+            
+        
+        # TRY TO MOVE THE CHARACTER, JUST IN CASE HE MOVES TO THE BORDER
+        if new_char_pos[0] >= len(matrix) or new_char_pos[0] < 0 or new_char_pos[1] >= len(matrix) or new_char_pos[1] < 0:
+            print ("You can't move outside of the map!")
             new_char_pos = char_pos
-          
-        #matrix[new_char_pos[0]][new_char_pos[1]] = "C"
+            
+            
+        # FINALLY, AFTER ALL THE CASES, LET'S UPDATE THE NEW POSITION OF THE CHAR  
+        matrix[new_char_pos[0]][new_char_pos[1]] = "C"
         
         # UPDATE THE POSITIONS AND REPEAT THE LOOP
         char_pos = get_char_position(matrix, "C")
@@ -142,7 +146,6 @@ def testing_input(matrix):
         if box_pos == storage_pos:
             print ("YOU WIN!")
             break
-    #return matrix
 
 testing_input(map1)
 
