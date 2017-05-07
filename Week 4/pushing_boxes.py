@@ -190,100 +190,104 @@ def testing_input(matrix):
     while True:          
         
         user_input = input("Move? ")
-        if user_input == "d":
-            new_char_pos = (char_pos[0],char_pos[1]+1)
-        if user_input == "s":
-            new_char_pos = (char_pos[0]+1,char_pos[1])
-        if user_input == "a":
-            new_char_pos = (char_pos[0],char_pos[1]-1)
-        if user_input == "w":
-            new_char_pos = (char_pos[0]-1,char_pos[1])
-        if user_input == "x":
-            break
+        if user_input not in ["w","a","s","d","x"]:
+            print ("You can only choose w,a,s,d to move or x to exit game!")
+        else:
+            if user_input == "d":
+                new_char_pos = (char_pos[0],char_pos[1]+1)
+            elif user_input == "s":
+                new_char_pos = (char_pos[0]+1,char_pos[1])
+            elif user_input == "a":
+                new_char_pos = (char_pos[0],char_pos[1]-1)
+            elif user_input == "w":
+                new_char_pos = (char_pos[0]-1,char_pos[1])
+            elif user_input == "x":
+                break
+                
+                
             
-        
-        # IN CASE THE CHAR TRIES TO PUSH A BOX  
-        if new_char_pos in box_pos:
-            if where_char_come_from(char_pos, new_char_pos) == "up":
-                new_box_pos = (new_char_pos[0]+1,new_char_pos[1])
-            elif where_char_come_from(char_pos, new_char_pos) == "down":
-                new_box_pos = (new_char_pos[0]-1,new_char_pos[1])
-            elif where_char_come_from(char_pos, new_char_pos) == "left":
-                new_box_pos = (new_char_pos[0],new_char_pos[1]+1)
-            elif where_char_come_from(char_pos, new_char_pos) == "right":
-                new_box_pos = (new_char_pos[0],new_char_pos[1]-1)
-                
-            # IN CASE THE NEW BOX POSITION IS OUTSIDE OF THE BORDER AND BESIDE AN OBSTACLE
-            if new_box_pos[0] >= len(matrix) or new_box_pos[0] < 0 or new_box_pos[1] >= len(matrix) or new_box_pos[1] < 0 or new_box_pos in obstacle_pos:
-                print ("Can't move this box!")
-                new_char_pos = char_pos
-            
-            # IN CASE HE PUSHES THE BOX INTO THE STORAGE POINT
-            elif new_box_pos in storage_pos:
-                matrix[new_box_pos[0]][new_box_pos[1]] = "S"
-            else:
-                matrix[new_box_pos[0]][new_box_pos[1]] = "B"
-                
-            # IN CASE THE CHARACTER TRIES TO MOVE 2 CONSECUTIVE BOXES AT THE SAME TIME
-            if new_box_pos in box_pos:
-                if where_char_come_from(new_char_pos, new_box_pos) == "up":
-                    new_box_pos2 = (new_box_pos[0]+1,new_box_pos[1])
-                elif where_char_come_from(new_char_pos, new_box_pos) == "down":
-                    new_box_pos2 = (new_box_pos[0]-1,new_box_pos[1])
-                elif where_char_come_from(new_char_pos, new_box_pos) == "left":
-                    new_box_pos2 = (new_box_pos[0],new_box_pos[1]+1)
-                elif where_char_come_from(new_char_pos, new_box_pos) == "right":
-                    new_box_pos2 = (new_box_pos[0],new_box_pos[1]-1)
-                
-                # IN CASE THE NEW BOX2 POSITION IS OUTSIDE OF THE BORDER AND BESIDE AN OBSTACLE
-                if new_box_pos2[0] >= len(matrix) or new_box_pos2[0] < 0 or new_box_pos2[1] >= len(matrix) or new_box_pos2[1] < 0 or new_box_pos2 in obstacle_pos:
-                    print ("Can't move these boxes!")
+            # IN CASE THE CHAR TRIES TO PUSH A BOX  
+            if new_char_pos in box_pos:
+                if where_char_come_from(char_pos, new_char_pos) == "up":
+                    new_box_pos = (new_char_pos[0]+1,new_char_pos[1])
+                elif where_char_come_from(char_pos, new_char_pos) == "down":
+                    new_box_pos = (new_char_pos[0]-1,new_char_pos[1])
+                elif where_char_come_from(char_pos, new_char_pos) == "left":
+                    new_box_pos = (new_char_pos[0],new_char_pos[1]+1)
+                elif where_char_come_from(char_pos, new_char_pos) == "right":
+                    new_box_pos = (new_char_pos[0],new_char_pos[1]-1)
+                    
+                # IN CASE THE NEW BOX POSITION IS OUTSIDE OF THE BORDER AND BESIDE AN OBSTACLE
+                if new_box_pos[0] >= len(matrix) or new_box_pos[0] < 0 or new_box_pos[1] >= len(matrix) or new_box_pos[1] < 0 or new_box_pos in obstacle_pos:
+                    print ("Can't move this box!")
                     new_char_pos = char_pos
                 
-                # IN CASE HE PUSHES THE NEW BOX2 INTO THE STORAGE POINT:
-                elif new_box_pos2 in storage_pos:
-                    matrix[new_box_pos2[0]][new_box_pos2[1]] = "S"
+                # IN CASE HE PUSHES THE BOX INTO THE STORAGE POINT
+                elif new_box_pos in storage_pos:
+                    matrix[new_box_pos[0]][new_box_pos[1]] = "S"
                 else:
                     matrix[new_box_pos[0]][new_box_pos[1]] = "B"
-                    matrix[new_box_pos2[0]][new_box_pos2[1]] = "B"
-            
-                # IN CASE THE CHARACTER TRIES TO MOVE 3 CONSECUTIVE BOXES AT THE SAME TIME
-                if check_consecutive(box_pos) == True:
-                    print ("You are not strong enough to push these boxes!")
-                    new_char_pos = char_pos
+                    
+                # IN CASE THE CHARACTER TRIES TO MOVE 2 CONSECUTIVE BOXES AT THE SAME TIME
+                if new_box_pos in box_pos:
+                    if where_char_come_from(new_char_pos, new_box_pos) == "up":
+                        new_box_pos2 = (new_box_pos[0]+1,new_box_pos[1])
+                    elif where_char_come_from(new_char_pos, new_box_pos) == "down":
+                        new_box_pos2 = (new_box_pos[0]-1,new_box_pos[1])
+                    elif where_char_come_from(new_char_pos, new_box_pos) == "left":
+                        new_box_pos2 = (new_box_pos[0],new_box_pos[1]+1)
+                    elif where_char_come_from(new_char_pos, new_box_pos) == "right":
+                        new_box_pos2 = (new_box_pos[0],new_box_pos[1]-1)
+                    
+                    # IN CASE THE NEW BOX2 POSITION IS OUTSIDE OF THE BORDER AND BESIDE AN OBSTACLE
+                    if new_box_pos2[0] >= len(matrix) or new_box_pos2[0] < 0 or new_box_pos2[1] >= len(matrix) or new_box_pos2[1] < 0 or new_box_pos2 in obstacle_pos:
+                        print ("Can't move these boxes!")
+                        new_char_pos = char_pos
+                    
+                    # IN CASE HE PUSHES THE NEW BOX2 INTO THE STORAGE POINT:
+                    elif new_box_pos2 in storage_pos:
+                        matrix[new_box_pos2[0]][new_box_pos2[1]] = "S"
+                    else:
+                        matrix[new_box_pos[0]][new_box_pos[1]] = "B"
+                        matrix[new_box_pos2[0]][new_box_pos2[1]] = "B"
                 
-        
-        # IN CASE CHAR MOVES ACROSS THE STORAGE POINT
-        if char_pos in storage_pos:
-            matrix[char_pos[0]][char_pos[1]] = "S"
-        else:
-            matrix[char_pos[0]][char_pos[1]] = "-"
+                    # IN CASE THE CHARACTER TRIES TO MOVE 3 CONSECUTIVE BOXES AT THE SAME TIME
+                    if check_consecutive(box_pos) == True:
+                        print ("You are not strong enough to push these boxes!")
+                        new_char_pos = char_pos
+                    
             
-        # IN CASE CHAR TRIES TO MOVE ACROSS AN OBSTACLE
-        if new_char_pos in obstacle_pos:
-            new_char_pos = char_pos
+            # IN CASE CHAR MOVES ACROSS THE STORAGE POINT
+            if char_pos in storage_pos:
+                matrix[char_pos[0]][char_pos[1]] = "S"
+            else:
+                matrix[char_pos[0]][char_pos[1]] = "-"
+                
+            # IN CASE CHAR TRIES TO MOVE ACROSS AN OBSTACLE
+            if new_char_pos in obstacle_pos:
+                new_char_pos = char_pos
+                
             
-        
-        # TRY TO MOVE THE CHARACTER, JUST IN CASE HE MOVES TO THE BORDER
-        if new_char_pos[0] >= len(matrix) or new_char_pos[0] < 0 or new_char_pos[1] >= len(matrix[0]) or new_char_pos[1] < 0:
-            print ("You can't move outside of the map!")
-            new_char_pos = char_pos
+            # TRY TO MOVE THE CHARACTER, JUST IN CASE HE MOVES TO THE BORDER
+            if new_char_pos[0] >= len(matrix) or new_char_pos[0] < 0 or new_char_pos[1] >= len(matrix[0]) or new_char_pos[1] < 0:
+                print ("You can't move outside of the map!")
+                new_char_pos = char_pos
+                
+                
+            # FINALLY, AFTER ALL THE CASES, LET'S UPDATE THE NEW POSITION OF THE CHAR  
+            matrix[new_char_pos[0]][new_char_pos[1]] = "C"
             
             
-        # FINALLY, AFTER ALL THE CASES, LET'S UPDATE THE NEW POSITION OF THE CHAR  
-        matrix[new_char_pos[0]][new_char_pos[1]] = "C"
-        
-        
-        # UPDATE THE POSITIONS AND REPEAT THE LOOP
-        char_pos = get_char_position(matrix,"C")[0]
-        box_pos = get_char_position(matrix,"B")   
-        pretty_printer(matrix)
-        
-        
-        # WINNING ANNOUCEMENT
-        if box_pos == []:
-            print ("YOU WIN!")
-            break
+            # UPDATE THE POSITIONS AND REPEAT THE LOOP
+            char_pos = get_char_position(matrix,"C")[0]
+            box_pos = get_char_position(matrix,"B")   
+            pretty_printer(matrix)
+            
+            
+            # WINNING ANNOUCEMENT
+            if box_pos == []:
+                print ("YOU WIN!")
+                break
 
 # TESTING AREA
 test_map = [["-","-","-","O","-","-"],
