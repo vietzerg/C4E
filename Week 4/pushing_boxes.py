@@ -6,6 +6,8 @@ Created on Fri May  5 20:11:30 2017
 """
 
 # 7/5/2017:
+# FIXED THE BUG (1) OF check_consecutive
+# (1) BUG OF check_consecutive IN CASES WHERE THERE ARE MORE THAN 3 BOXES
 # UPDATED A NEW MAP GENERATOR WITH ADDITIONAL ARGUMENTS
 # MAP GENERATORS DO NOT GENERATE BOXES ON THE BORDERS OF THE MAP!
 # ADDED VARIOUS CASES IN-GAME
@@ -137,16 +139,43 @@ def check_consecutive(box_pos):
     if len(box_pos) < 3:
         return False
     else:
-        row_coordinates = set()
-        col_coordinates = set()
+        row_coord_dict = {}
+        col_coord_dict = {}
         for box_position in box_pos:
-            row_coordinates.add(box_position[0])
-            col_coordinates.add(box_position[1])
-        if len(row_coordinates) > 1 and len(col_coordinates) > 1:
-            return False
-        else:
-            return True
-#print (check_consecutive([(0,1),(1,1),(2,1)]))
+            if box_position[0] in row_coord_dict.keys():
+                row_coord_dict[box_position[0]].append(box_position[1])
+            else:
+                row_coord_dict[box_position[0]] = [box_position[1]]
+            if box_position[1] in col_coord_dict.keys():
+                col_coord_dict[box_position[1]].append(box_position[0])
+            else:
+                col_coord_dict[box_position[1]] = [box_position[0]]
+        
+        #print (row_coord_dict)
+        #print (col_coord_dict)        
+
+        for col_ind_list in row_coord_dict.values():
+            if len(col_ind_list) >= 3:
+                for i, col_index in enumerate(sorted(col_ind_list)):
+                    if col_index + 1 == sorted(col_ind_list)[i+1] and col_index + 2 == sorted(col_ind_list)[i+2]:
+                        return True
+                        break
+                    
+        for row_ind_list in col_coord_dict.values():
+            if len(row_ind_list) >= 3:
+                for i, row_index in enumerate(sorted(row_ind_list)):
+                    if row_index + 1 == sorted(row_ind_list)[i+1] and row_index + 2 == sorted(row_ind_list)[i+2]:
+                        return True
+                        break
+        return False
+
+# HERE I TEST THE WORKINGS OF THE check_consecutive FUNCTION 
+#test_map2 = [["-","-","-","O","-","-"],
+#            ["-","B","-","B","C","-"],
+#            ["-","B","-","-","-","-"],
+#            ["-","B","-","-","-","-"],
+#            ["-","-","-","B","-","-"]]
+#print(check_consecutive(get_char_position(test_map2,"B")))
 
 
 def testing_input(matrix):
@@ -251,7 +280,7 @@ def testing_input(matrix):
         pretty_printer(matrix)
         
         
-        #WINNING ANNOUCEMENT
+        # WINNING ANNOUCEMENT
         if box_pos == []:
             print ("YOU WIN!")
             break
@@ -261,5 +290,5 @@ test_map = [["-","-","-","O","-","-"],
             ["-","B","B","B","C","-"],
             ["-","S","-","-","-","-"]]
 
-map2 = generate_map_v3(5,5,2,2,1)
-testing_input(test_map)
+map2 = generate_map_v3(10,10,3,4,3)
+testing_input(map2)
