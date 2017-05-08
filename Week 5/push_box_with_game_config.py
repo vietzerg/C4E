@@ -1,34 +1,14 @@
 # -*- coding: utf-8 -*-
 """
-Created on Fri May  5 20:11:30 2017
+Created on Mon May  8 21:03:46 2017
 
 @author: PA
 """
 
-# 8/5/2017:
-# ADDED A POWER-UP, HELPING THE PLAYER BY REMOVING A RANDOM BOX ON THE MAP
-# FIXED THE BUG (2), ADDED SOME HELPER FUNCTIONS
-# (2) NEW BUG: WHEN CHAR CANNOT MOVE 2 CONSECUTIVE BOXES WHEN THERE ARE 3 CONSECUTIVE BOXES ELSEWHERE ON THE MAP!
-# 7/5/2017:
-# FIXED THE BUG (1) OF check_consecutive
-# (1) BUG OF check_consecutive IN CASES WHERE THERE ARE MORE THAN 3 BOXES
-# UPDATED A NEW MAP GENERATOR WITH ADDITIONAL ARGUMENTS
-# MAP GENERATORS DO NOT GENERATE BOXES ON THE BORDERS OF THE MAP!
-# ADDED VARIOUS CASES IN-GAME
-
-
-import pprint
 import random
 from itertools import groupby
 from operator import itemgetter
 import csv
-
-test_map1 = [["-","-","-","O","-","-"],
-            ["-","B","-","B","-","-"],
-            ["-","B","-","-","-","-"],
-            ["-","B","-","-","-","-"],
-            ["-","-","-","B","B","C"],
-            ["-","B","B","B","B","-"]]
 
 
 def pretty_printer(matrix):
@@ -39,105 +19,6 @@ def pretty_printer(matrix):
     print ('\n'.join(table))
     
 
-# GENERATE A MAP OF SIZE (mxn) WITH n_obstacle OBSTACLES
-def generate_map(m,n,n_obstacle):
-    mapping = []
-    special_values = set()
-    
-    # INITIALIZE BY CREATING THE CHARACTER'S POSITION
-    C_pos = (random.randrange(m), random.randrange(n))    
-    special_values.add(C_pos)
-    while True:
-        S_pos = (random.randrange(m), random.randrange(n))
-        if S_pos != C_pos:
-            special_values.add(S_pos)
-            break
-    while True:
-        B_pos = (random.randrange(m), random.randrange(n))
-        if B_pos != (0,0) and B_pos != (0,n) and B_pos != (m,n) and B_pos != (m,0) and B_pos not in special_values:
-            special_values.add(B_pos)
-            break
-    obstacle_positions_list = []
-    for i in range(n_obstacle):
-        while True:
-            obs_pos = (random.randrange(m), random.randrange(n))
-            if obs_pos not in special_values and obs_pos not in obstacle_positions_list:
-                obstacle_positions_list.append(obs_pos)
-                break        
-    
-    for y in range(m):
-        row = []
-        for x in range(n):
-            if (y,x) == C_pos:
-                row.append("C")
-            elif (y,x) == S_pos:
-                row.append("S")
-            elif (y,x) == B_pos:
-                row.append("B")
-            elif (y,x) in obstacle_positions_list:
-                row.append("O")
-            else:
-                row.append("-")
-        mapping.append(row)
-    return mapping
-
-    
-# GENERATE A MAP OF SIZE (mxn) WITH ADDITIONAL ARGUMENTS FOR NUMBER OF OBSTACLES/BOXES/STORAGE POINTS   
-def generate_map_v3(m,n,n_obstacle,n_box,n_storage):
-    mapping = []
-    
-    # CREATE A DICTIONARY TO STORE SPECIAL POSITIONS
-    position_dict = {}
-    
-    # CONVERT ARGUMENTS INTO INTEGER
-    m = int(m)
-    n = int(n)
-    n_obstacle = int(n_obstacle)
-    n_box = int(n_box)
-    n_storage = int(n_storage)
-    
-    # INITIALIZE BY CREATING THE CHARACTER'S POSITION
-    C_pos = (random.randrange(m), random.randrange(n))
-    position_dict[C_pos] = "C"
-    for i in range(n_storage):
-        while True:
-            S_pos = (random.randrange(m), random.randrange(n))
-            if S_pos not in position_dict.keys():
-                position_dict[S_pos] = "S"
-                break
-    for i in range(n_box):
-        while True:
-            B_pos = (random.randrange(m), random.randrange(n))
-            if B_pos[0] != 0 and B_pos[0] != m-1 and B_pos[1] != 0 and B_pos[1] != n-1 and B_pos not in position_dict.keys():
-                position_dict[B_pos] = "B"
-                break
-    for i in range(n_obstacle):
-        while True:
-            O_pos = (random.randrange(m), random.randrange(n))
-            if O_pos not in position_dict.keys():
-                position_dict[O_pos] = "O"
-                break
-            
-    for y in range(m):
-        row = []
-        for x in range(n):
-            if (y,x) in position_dict.keys():
-                row.append(position_dict[(y,x)])
-            else:
-                row.append("-")
-        mapping.append(row)
-    return mapping
-
-def generate_powerups(matrix, excluded_positions_list):
-    while True:
-        powerup_pos = random.randrange(len(matrix)), random.randrange(len(matrix[0]))
-        if powerup_pos not in excluded_positions_list:
-            return powerup_pos
-
-#print (generate_powerups(test_map1))
-
-
-# RETURNS A LIST CONTAINING THE POSITIONS OF AN OBJECT ON THE MAP
 def get_char_position(matrix, objectt):
     char_positions = []
     for row_index, row in enumerate(matrix):
@@ -145,8 +26,15 @@ def get_char_position(matrix, objectt):
             if column == objectt:
                 char_positions.append((row_index,column_index))
     return char_positions
-            
-            
+
+
+def generate_powerups(matrix, excluded_positions_list):
+    while True:
+        powerup_pos = random.randrange(len(matrix)), random.randrange(len(matrix[0]))
+        if powerup_pos not in excluded_positions_list:
+            return powerup_pos
+        
+        
 def where_char_come_from(char_pos, box_position):
     if char_pos[0] == box_position[0] and box_position[1]+1 == char_pos[1]:
         return "right"
@@ -156,7 +44,8 @@ def where_char_come_from(char_pos, box_position):
         return "left"
     if char_pos[0]+1 == box_position[0] and box_position[1] == char_pos[1]:
         return "up"
-    
+
+
 # GET SERIES OF AT LEAST 3 CONSECUTIVE NUMBERS IN A LIST
 def get_consecutive(num_list):
     big_result = []
@@ -165,9 +54,7 @@ def get_consecutive(num_list):
         if len(conse_list) >= 3:
             big_result.append(conse_list)
     return big_result
-#print(get_consecutive([2, 3, 4, 5, 12, 13, 14, 15, 16, 17]))
-#print(get_consecutive([1, 3, 4, 6, 12]))
-    
+
 
 # THE CHARACTER IS ONLY STRONG ENOUGH TO PUSH 2 CONSECUTIVE BOXES AT THE SAME TIME!
 def check_consecutive(box_pos):
@@ -200,27 +87,43 @@ def check_consecutive(box_pos):
                 consecutive_list = get_consecutive(row_ind_list)
                 if consecutive_list != []:
                     real_col_consecutive[col] = consecutive_list
-        
-#        print (real_row_consecutive)
-#        print (real_col_consecutive) 
+                    
         return (real_row_consecutive, real_col_consecutive)
-
-# HERE I TEST THE WORKINGS OF THE check_consecutive FUNCTION 
-test_map2 = [["-","-","-","O","-","-"],
-            ["-","B","-","B","-","-"],
-            ["-","B","-","-","-","-"],
-            ["-","B","-","-","-","-"],
-            ["-","-","-","B","B","C"],
-            ["-","B","B","B","B","-"]]
-#print (check_consecutive(get_char_position(test_map2,"B")))
-
-
-def testing_input(game_config):
     
-    with open(game_config, "r") as csvfile:
+
+def generate_map(config_file):
+    
+    mapping = []
+    with open(config_file, 'r') as csvfile:
         csvreader = csv.DictReader(csvfile)
+        position_dict = {}
         for row in csvreader:
-            matrix = generate_map_v3(row["height"],row["width"],row["n_obstacle"],row["n_box"],row["n_storage"])
+            if row['type'] == 'height':
+                height = int(row['value'])
+            elif row['type'] == 'width':
+                width = int(row['value'])
+            elif row['type'] == 'box':
+                position_dict[(int(row['x']),int(row['y']))] = "B"
+            elif row['type'] == 'storage':
+                position_dict[(int(row['x']),int(row['y']))] = "S"
+            elif row['type'] == 'obstacle':
+                position_dict[(int(row['x']),int(row['y']))] = "O"
+            elif row['type'] == 'character':
+                position_dict[(int(row['x']),int(row['y']))] = "C"
+        
+        for y in range(height):
+            row = []
+            for x in range(width):
+                if (y,x) in position_dict.keys():
+                    row.append(position_dict[(y,x)])
+                else:
+                    row.append("-")
+            mapping.append(row)
+        return mapping          
+#pretty_printer(generate_map("game_cfg.csv"))
+
+
+def testing_input(matrix):
     
     pretty_printer(matrix)
     
@@ -352,11 +255,4 @@ def testing_input(game_config):
             if box_pos == []:
                 print ("YOU WIN!")
                 break
-
-# TESTING AREA
-test_map = [["-","-","-","O","-","-"],
-            ["-","B","B","B","C","-"],
-            ["-","S","-","-","-","-"]]
-
-#map2 = generate_map_v3(10,10,3,4,3)
-testing_input("game_cfg.csv")
+testing_input(generate_map("game_cfg.csv"))
