@@ -5,6 +5,9 @@ Created on Fri May  5 20:11:30 2017
 @author: PA
 """
 
+# 8/5/2017:
+# FIXED THE BUG (2), ADDED SOME HELPER FUNCTIONS
+# (2) NEW BUG: WHEN CHAR CANNOT MOVE 2 CONSECUTIVE BOXES WHEN THERE ARE 3 CONSECUTIVE BOXES ELSEWHERE ON THE MAP!
 # 7/5/2017:
 # FIXED THE BUG (1) OF check_consecutive
 # (1) BUG OF check_consecutive IN CASES WHERE THERE ARE MORE THAN 3 BOXES
@@ -15,6 +18,8 @@ Created on Fri May  5 20:11:30 2017
 
 import pprint
 import random
+from itertools import groupby
+from operator import itemgetter
 
 
 def pretty_printer(matrix):
@@ -133,6 +138,17 @@ def where_char_come_from(char_pos, box_position):
     if char_pos[0]+1 == box_position[0] and box_position[1] == char_pos[1]:
         return "up"
     
+# GET SERIES OF AT LEAST 3 CONSECUTIVE NUMBERS IN A LIST
+def get_consecutive(num_list):
+    big_result = []
+    for k, g in groupby(enumerate(num_list), lambda ix : ix[0] - ix[1]):
+        conse_list = list(map(itemgetter(1), g))
+        if len(conse_list) >= 3:
+            big_result.append(conse_list)
+    return big_result
+#print(get_consecutive([2, 3, 4, 5, 12, 13, 14, 15, 16, 17]))
+#print(get_consecutive([1, 3, 4, 6, 12]))
+    
 
 # THE CHARACTER IS ONLY STRONG ENOUGH TO PUSH 2 CONSECUTIVE BOXES AT THE SAME TIME!
 def check_consecutive(box_pos):
@@ -151,31 +167,33 @@ def check_consecutive(box_pos):
             else:
                 col_coord_dict[box_position[1]] = [box_position[0]]
         
-        #print (row_coord_dict)
-        #print (col_coord_dict)        
+        real_row_consecutive = {}
+        real_col_consecutive = {}        
 
-        for col_ind_list in row_coord_dict.values():
+        for row, col_ind_list in row_coord_dict.items():
             if len(col_ind_list) >= 3:
-                for i, col_index in enumerate(sorted(col_ind_list)):
-                    if col_index + 1 == sorted(col_ind_list)[i+1] and col_index + 2 == sorted(col_ind_list)[i+2]:
-                        return True
-                        break
+                consecutive_list = get_consecutive(col_ind_list)
+                if consecutive_list != []:
+                    real_row_consecutive[row] = consecutive_list
                     
-        for row_ind_list in col_coord_dict.values():
+        for col, row_ind_list in col_coord_dict.items():
             if len(row_ind_list) >= 3:
-                for i, row_index in enumerate(sorted(row_ind_list)):
-                    if row_index + 1 == sorted(row_ind_list)[i+1] and row_index + 2 == sorted(row_ind_list)[i+2]:
-                        return True
-                        break
-        return False
+                consecutive_list = get_consecutive(row_ind_list)
+                if consecutive_list != []:
+                    real_col_consecutive[col] = consecutive_list
+        
+#        print (real_row_consecutive)
+#        print (real_col_consecutive) 
+        return (real_row_consecutive, real_col_consecutive)
 
 # HERE I TEST THE WORKINGS OF THE check_consecutive FUNCTION 
-#test_map2 = [["-","-","-","O","-","-"],
-#            ["-","B","-","B","C","-"],
-#            ["-","B","-","-","-","-"],
-#            ["-","B","-","-","-","-"],
-#            ["-","-","-","B","-","-"]]
-#print(check_consecutive(get_char_position(test_map2,"B")))
+test_map2 = [["-","-","-","O","-","-"],
+            ["-","B","-","B","-","-"],
+            ["-","B","-","-","-","-"],
+            ["-","B","-","-","-","-"],
+            ["-","-","-","B","B","C"],
+            ["-","B","B","B","B","-"]]
+#print (check_consecutive(get_char_position(test_map2,"B")))
 
 
 def testing_input(matrix):
@@ -189,7 +207,8 @@ def testing_input(matrix):
     
     while True:          
         
-        user_input = input("Move? ")
+        consecutive_positions = check_consecutive(box_pos)
+        user_input = input("Move? ").lower()
         if user_input not in ["w","a","s","d","x"]:
             print ("You can only choose w,a,s,d to move or x to exit game!")
         else:
@@ -252,9 +271,18 @@ def testing_input(matrix):
                         matrix[new_box_pos2[0]][new_box_pos2[1]] = "B"
                 
                     # IN CASE THE CHARACTER TRIES TO MOVE 3 CONSECUTIVE BOXES AT THE SAME TIME
-                    if check_consecutive(box_pos) == True:
-                        print ("You are not strong enough to push these boxes!")
-                        new_char_pos = char_pos
+                        # CHECKING ROW
+                    if new_box_pos[0] in consecutive_positions[0].keys():
+                        for consecutive_list in consecutive_positions[0][new_box_pos[0]]:
+                            if new_box_pos[1] in consecutive_list:
+                                print ("You are not strong enough to push these boxes!")
+                                new_char_pos = char_pos
+                        # CHECKING COLUMN
+                    if new_box_pos[1] in consecutive_positions[1].keys():
+                        for consecutive_list in consecutive_positions[1][new_box_pos[1]]:
+                            if new_box_pos[0] in consecutive_list:
+                                print ("You are not strong enough to push these boxes!")
+                                new_char_pos = char_pos
                     
             
             # IN CASE CHAR MOVES ACROSS THE STORAGE POINT
@@ -295,4 +323,4 @@ test_map = [["-","-","-","O","-","-"],
             ["-","S","-","-","-","-"]]
 
 map2 = generate_map_v3(10,10,3,4,3)
-testing_input(map2)
+testing_input(test_map2)
