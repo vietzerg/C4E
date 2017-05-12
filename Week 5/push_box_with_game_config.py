@@ -59,7 +59,7 @@ def get_consecutive(num_list):
 # THE CHARACTER IS ONLY STRONG ENOUGH TO PUSH 2 CONSECUTIVE BOXES AT THE SAME TIME!
 def check_consecutive(box_pos):
     if len(box_pos) < 3:
-        return False
+        return ()
     else:
         row_coord_dict = {}
         col_coord_dict = {}
@@ -203,17 +203,18 @@ def testing_input(matrix):
                 
                     # IN CASE THE CHARACTER TRIES TO MOVE 3 CONSECUTIVE BOXES AT THE SAME TIME
                         # CHECKING ROW
-                    if new_box_pos[0] in consecutive_positions[0].keys():
-                        for consecutive_list in consecutive_positions[0][new_box_pos[0]]:
-                            if new_box_pos[1] in consecutive_list:
-                                print ("You are not strong enough to push these boxes!")
-                                new_char_pos = char_pos
-                        # CHECKING COLUMN
-                    if new_box_pos[1] in consecutive_positions[1].keys():
-                        for consecutive_list in consecutive_positions[1][new_box_pos[1]]:
-                            if new_box_pos[0] in consecutive_list:
-                                print ("You are not strong enough to push these boxes!")
-                                new_char_pos = char_pos
+                    if consecutive_positions != ():
+                        if new_box_pos[0] in consecutive_positions[0].keys():
+                            for consecutive_list in consecutive_positions[0][new_box_pos[0]]:
+                                if new_box_pos[1] in consecutive_list:
+                                    print ("You are not strong enough to push these boxes!")
+                                    new_char_pos = char_pos
+                            # CHECKING COLUMN
+                        if new_box_pos[1] in consecutive_positions[1].keys():
+                            for consecutive_list in consecutive_positions[1][new_box_pos[1]]:
+                                if new_box_pos[0] in consecutive_list:
+                                    print ("You are not strong enough to push these boxes!")
+                                    new_char_pos = char_pos
                     
             
             # IN CASE CHAR MOVES ACROSS THE STORAGE POINT
