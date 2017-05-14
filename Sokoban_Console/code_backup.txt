@@ -1,0 +1,21 @@
+Line 97:
+#    # CHECK IF THE CHARACTER'S NEXT POSITION IS AT A BOX (CHARACTER TRIES TO MOVE A BOX)
+#    def in_boxes(self, position_tuple):
+#        for box in self.boxes:
+#            if box.x == position_tuple[0] and box.y == position_tuple[1]:
+#                return box
+#        return False
+#    
+#    # CHECK IF THE CHARACTER HITS AN OBSTACLE
+#    def in_obstacles(self, position_tuple):
+#        for obs in self.obstacles:
+#            if obs.x == position_tuple[0] and obs.y == position_tuple[1]:
+#                return True
+#        return False
+#    
+#    # CHECK IF THE CHARACTER EATS POWERUP:
+#    def in_blink(self, position_tuple):
+#        for blink in self.blinks:
+#            if blink.x == position_tuple[0] and blink.y == position_tuple[1]:
+#                return blink
+#        return False

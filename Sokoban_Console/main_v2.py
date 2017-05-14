@@ -88,26 +88,13 @@ class Map:
         else:
             return False
     
-    # CHECK IF THE CHARACTER'S NEXT POSITION IS AT A BOX (CHARACTER TRIES TO MOVE A BOX)
-    def in_boxes(self, position_tuple):
-        for box in self.boxes:
-            if box.x == position_tuple[0] and box.y == position_tuple[1]:
-                return box
-        return False
-    
-    # CHECK IF THE CHARACTER HITS AN OBSTACLE
-    def in_obstacles(self, position_tuple):
-        for obs in self.obstacles:
-            if obs.x == position_tuple[0] and obs.y == position_tuple[1]:
-                return True
-        return False
-    
-    # CHECK IF THE CHARACTER EATS POWERUP:
-    def in_blink(self, position_tuple):
-        for blink in self.blinks:
-            if blink.x == position_tuple[0] and blink.y == position_tuple[1]:
-                return blink
-        return False
+    # CHECK IF CHARACTER HITS AN OBJECT SERIES (SERIES OF BOXES, OBSTACLES, BLINK-POWERUPS)    
+    def in_object_series(self, that_object_list, position_tuple):
+        for obj in that_object_list:
+            if obj.x == position_tuple[0] and obj.y == position_tuple[1]:
+                return obj
+        return False   
+
             
     # GET A LIST BOXES TO MOVE (IN CASE CHARACTER PUSHES MULTIPLE BOXES)
     def get_boxes_to_move(self, box_pushed, dx, dy):
@@ -151,6 +138,13 @@ class Map:
         self.objects.remove(object_to_remove)
         that_object_list.remove(object_to_remove)
         del object_to_remove
+
+    # CHECK IF CHARACTER BLINKED
+    def check_blink(self, dx, dy):
+        if (dx,dy) == (0,-3) or (dx,dy) == (0,3) or (dx,dy) == (-3,0) or (dx,dy) == (3,0):
+            return True
+        else:
+            return False
     
     # MAIN PROGRAM    
     def process_input(self):
@@ -173,7 +167,7 @@ class Map:
         elif move == "BW":
             if self.mana > 0:
                 dx,dy = 0,-3
-                self.mana -= 1
+                #self.mana -= 1
             else:
                 dx,dy = 0,-1
                 print ("Not enough mana! Moved one step instead")
@@ -181,7 +175,7 @@ class Map:
         elif move == "BS":
             if self.mana > 0:
                 dx,dy = 0,3
-                self.mana -= 1
+                #self.mana -= 1
             else:
                 dx,dy = 0,1
                 print ("Not enough mana!! Moved one step instead")
@@ -189,7 +183,7 @@ class Map:
         elif move == "BA":
             if self.mana > 0:
                 dx,dy = -3,0
-                self.mana -= 1
+                #self.mana -= 1
             else:
                 dx,dy = -1,0
                 print ("Not enough mana!! Moved one step instead")
@@ -197,46 +191,52 @@ class Map:
         elif move == "BD":
             if self.mana > 0:
                 dx,dy = 3,0
-                self.mana -= 1
+                #self.mana -= 1
             else:
                 dx,dy = 1,0
-                print ("Not enough mana!! Moved one step instead")
+                print ("Not enough mana!! Moved one step instead.")
             dx_box,dy_box = 1,0          
         else:
             print ("You can choose among (W,A,S,D) !")
-        
+            
         C_next = self.chaien.next_pos(dx, dy)
         
         # CHECK IF CHARACTER TRIES TO PUSH A BOX AND MOVE MULTIPLE/SINGLE BOX/BOXES
-        if self.in_boxes(C_next) is not False:
-            box_pushed = self.in_boxes(C_next)
+        if self.in_object_series(self.boxes,C_next) is not False:
+            box_pushed = self.in_object_series(self.boxes, C_next)
             boxes_to_move = self.get_boxes_to_move(box_pushed, dx_box, dy_box)
             last_box_next = boxes_to_move[-1].next_pos(dx_box ,dy_box)
             
             # CHECK IF THE LAST BOX IN THE BOX SERIES IS IN MAP AND HITS AN OBSTACLE
-            if self.in_map((last_box_next[0], last_box_next[1])) and self.in_obstacles((last_box_next[0], last_box_next[1])) == False: # IF THE LAST BOX DOES NOT HIT ANYTHING, THEN...
+            if self.in_map((last_box_next[0], last_box_next[1])) and self.in_object_series(self.obstacles, (last_box_next[0], last_box_next[1])) == False: # IF THE LAST BOX DOES NOT HIT ANYTHING, THEN...
                     self.move_boxes(boxes_to_move, dx_box, dy_box)
                     self.chaien.move(dx ,dy)
+                    # CHECK IF THE MOVE WAS BLINK OR NOT
+                    if self.check_blink(dx, dy):
+                        self.mana -= 1
             else:
-                print ("Unable to move box(es)")
+                print ("Unable to move box(es).")
         
         # CHECK IF C NEXT HITS AN OBSTACLE
-        elif self.in_obstacles(C_next):
+        elif self.in_object_series(self.obstacles, C_next) != False:
             pass
         
         # CHECK IF CHARACTER IS IN MAP
         elif self.in_map(C_next):
             self.chaien.move(dx, dy)
+            # CHECK IF THE MOVE WAS BLINK OR NOT
+            if self.check_blink(dx, dy):
+                self.mana -= 1
             
         else:
-            print ("Can't move out of map")
+            print ("Can't move out of map!")
             
         # CHECK IF CHARACTER EATS BLINK
-        if self.in_blink((self.chaien.x, self.chaien.y)) != False:
+        if self.in_object_series(self.blinks, (self.chaien.x, self.chaien.y)) != False:
             self.mana = 3
-            blink_to_remove = self.in_blink((self.chaien.x, self.chaien.y))
+            blink_to_remove = self.in_object_series(self.blinks, (self.chaien.x, self.chaien.y))
             self.remover(self.blinks, blink_to_remove)
-            print ("You got a blink-powerup! 3 steps per move for 3 moves!")
+            print ("You got a blink-powerup! 3 steps per move for 3 moves!\nPress b + a direction button to blink!")
         
         # CHECK IF A BOX IS IN THE STORAGE POINT
         if self.in_storage() != False:
