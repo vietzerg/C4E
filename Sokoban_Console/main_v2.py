@@ -156,6 +156,8 @@ class Map:
         elif move == "D":
             dx = 1
             dy = 0
+        else:
+            print ("You can choose among (W,A,S,D) !")
         
         C_next = self.chaien.next_pos(dx, dy)
         
