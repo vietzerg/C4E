@@ -151,20 +151,13 @@ class Map:
             box_pushed = self.in_boxes(C_next)
             boxes_to_move = self.get_boxes_to_move(box_pushed, dx, dy)
             last_box_next = boxes_to_move[-1].next_pos(dx ,dy)
-            if self.in_map((last_box_next[0], last_box_next[1])):
+            
+            # CHECK IF THE LAST BOX IN THE BOX SERIES IS IN MAP AND HITS AN OBSTACLE
+            if self.in_map((last_box_next[0], last_box_next[1])) and self.in_obstacles((last_box_next[0], last_box_next[1])) == False: # IF THE LAST BOX DOES NOT HIT ANYTHING, THEN...
                     self.move_boxes(boxes_to_move, dx, dy)
                     self.chaien.move(dx ,dy)
             else:
                 print ("Can't push box out of map!")
-#            B_next = box_pushed.next_pos(dx, dy)
-            
-#            # CHECK IF B NEXT IS IN MAP AND MOVE MULTIPLE/SINGLE BOX/BOXES
-#            if self.in_map(B_next):
-#                boxes_to_move = self.get_boxes_to_move(box_pushed, dx, dy)
-#                last_box_next = boxes_to_move[-1].next_pos(dx ,dy)
-#                if self.in_map((last_box_next[0], last_box_next[1])):
-#                    self.move_boxes(boxes_to_move, dx, dy)
-#                    self.chaien.move(dx ,dy)
         
         # CHECK IF C NEXT HITS AN OBSTACLE
         elif self.in_obstacles(C_next):
