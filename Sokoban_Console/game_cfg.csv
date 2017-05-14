@@ -1,0 +1,9 @@
+type,value,x,y
+height,5,,
+width,5,,
+obstacle,,4,4
+obstacle,,0,4
+box,,1,2
+box,,3,3
+storage,,4,2
+character,,0,0
