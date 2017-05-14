@@ -31,9 +31,11 @@ class Map:
     def __init__(self, config_file):
         
         # SETTING UP THE PROPERTIES OF THE MAP
+        self.mana = 0
         self.obstacles = []
         self.boxes = []
         self.storages = []
+        self.blinks = []
         self.objects = []
         #self.objects_dict = {"chaien": 0, "obstacles": [], "boxes": [], "storages": []}
         with open(config_file, "r") as csvfile:
@@ -58,6 +60,10 @@ class Map:
                 elif row["type"] == "character":
                     self.chaien = SKObject(int(row["x"]), int(row["y"]), " C ")
                     self.objects.append(self.chaien)
+                elif row["type"] == "blink":
+                    a_blink = SKObject(int(row["x"]), int(row["y"]), " - ")
+                    self.blinks.append(a_blink)
+                    self.objects.append(a_blink)
         
     # CHECK IF THE (x,y) LOCATION IS AT ANY MAP OBJECT
     # CHECK IF THERE IS ANY OBJECT PRINTED !!!
@@ -96,6 +102,13 @@ class Map:
                 return True
         return False
     
+    # CHECK IF THE CHARACTER EATS POWERUP:
+    def in_blink(self, position_tuple):
+        for blink in self.blinks:
+            if blink.x == position_tuple[0] and blink.y == position_tuple[1]:
+                return blink
+        return False
+            
     # GET A LIST BOXES TO MOVE (IN CASE CHARACTER PUSHES MULTIPLE BOXES)
     def get_boxes_to_move(self, box_pushed, dx, dy):
         boxes_to_move = [box_pushed]
@@ -134,10 +147,10 @@ class Map:
         return False
     
     # REMOVE AN OBJECT (A BOX)
-    def remover(self, box):
-        self.objects.remove(box)
-        self.boxes.remove(box)
-        del box
+    def remover(self, that_object_list, object_to_remove):
+        self.objects.remove(object_to_remove)
+        that_object_list.remove(object_to_remove)
+        del object_to_remove
     
     # MAIN PROGRAM    
     def process_input(self):
@@ -146,17 +159,49 @@ class Map:
         dy = 0
 
         if move == "W":
-            dx = 0
-            dy = -1           
+            dx,dy = 0,-1
+            dx_box,dy_box = dx,dy
         elif move == "S":
-            dx = 0
-            dy = 1
+            dx,dy = 0,1
+            dx_box,dy_box = dx,dy
         elif move == "A":
-            dx = -1
-            dy = 0
+            dx,dy = -1,0
+            dx_box,dy_box = dx,dy
         elif move == "D":
-            dx = 1
-            dy = 0
+            dx,dy = 1,0
+            dx_box,dy_box = dx,dy
+        elif move == "BW":
+            if self.mana > 0:
+                dx,dy = 0,-3
+                self.mana -= 1
+            else:
+                dx,dy = 0,-1
+                print ("Not enough mana! Moved one step instead")
+            dx_box,dy_box = 0,-1            
+        elif move == "BS":
+            if self.mana > 0:
+                dx,dy = 0,3
+                self.mana -= 1
+            else:
+                dx,dy = 0,1
+                print ("Not enough mana!! Moved one step instead")
+            dx_box,dy_box = 0,1
+        elif move == "BA":
+            if self.mana > 0:
+                dx,dy = -3,0
+                self.mana -= 1
+            else:
+                dx,dy = -1,0
+                print ("Not enough mana!! Moved one step instead")
+            dx_box,dy_box = -1,0
+        elif move == "BD":
+            if self.mana > 0:
+                dx,dy = 3,0
+                self.mana -= 1
+            else:
+                dx,dy = 1,0
+                print ("Not enough mana!! Moved one step instead")
+            dx_box,dy_box = 1,0          
         else:
             print ("You can choose among (W,A,S,D) !")
         
@@ -165,14 +210,12 @@ class Map:
         # CHECK IF CHARACTER TRIES TO PUSH A BOX AND MOVE MULTIPLE/SINGLE BOX/BOXES
         if self.in_boxes(C_next) is not False:
             box_pushed = self.in_boxes(C_next)
-            boxes_to_move = self.get_boxes_to_move(box_pushed, dx, dy)
-            for box in boxes_to_move:
-                print (box.x, box.y)
-            last_box_next = boxes_to_move[-1].next_pos(dx ,dy)
+            boxes_to_move = self.get_boxes_to_move(box_pushed, dx_box, dy_box)
+            last_box_next = boxes_to_move[-1].next_pos(dx_box ,dy_box)
             
             # CHECK IF THE LAST BOX IN THE BOX SERIES IS IN MAP AND HITS AN OBSTACLE
             if self.in_map((last_box_next[0], last_box_next[1])) and self.in_obstacles((last_box_next[0], last_box_next[1])) == False: # IF THE LAST BOX DOES NOT HIT ANYTHING, THEN...
-                    self.move_boxes(boxes_to_move, dx, dy)
+                    self.move_boxes(boxes_to_move, dx_box, dy_box)
                     self.chaien.move(dx ,dy)
             else:
                 print ("Unable to move box(es)")
@@ -187,11 +230,18 @@ class Map:
             
         else:
             print ("Can't move out of map")
+            
+        # CHECK IF CHARACTER EATS BLINK
+        if self.in_blink((self.chaien.x, self.chaien.y)) != False:
+            self.mana = 3
+            blink_to_remove = self.in_blink((self.chaien.x, self.chaien.y))
+            self.remover(self.blinks, blink_to_remove)
+            print ("You got a blink-powerup! 3 steps per move for 3 moves!")
         
         # CHECK IF A BOX IS IN THE STORAGE POINT
         if self.in_storage() != False:
-            box_in_storage = self.in_storage()
-            self.remover(box_in_storage)
+            box_to_remove = self.in_storage()
+            self.remover(self.boxes, box_to_remove)
         
         if self.boxes == []:
             print ("You win!")
