@@ -117,13 +117,26 @@ class Map:
                 if box.y == boxes_to_move[-1].y - 1 and box.x == boxes_to_move[-1].x:
                     boxes_to_move.append(box)
         
-        return boxes_to_move
-        
+        return boxes_to_move        
         
     # MOVE MULTIPLE BOXES
     def move_boxes(self, boxes_to_move, dx, dy):
         for box in boxes_to_move:
             box.move(dx, dy)
+    
+    # CHECK IF A BOX IS IN A STORAGE POINT
+    def in_storage(self):
+        for box in self.boxes:
+            for storage in self.storages:
+                if (box.x, box.y) == (storage.x, storage.y):
+                    return box
+        return False
+    
+    # REMOVE AN OBJECT (A BOX)
+    def remover(self, box):
+        self.objects.remove(box)
+        self.boxes.remove(box)
+        del box
     
     # MAIN PROGRAM    
     def process_input(self):
@@ -157,7 +170,7 @@ class Map:
                     self.move_boxes(boxes_to_move, dx, dy)
                     self.chaien.move(dx ,dy)
             else:
-                print ("Can't push box out of map!")
+                print ("Unable to move box(es)")
         
         # CHECK IF C NEXT HITS AN OBSTACLE
         elif self.in_obstacles(C_next):
@@ -169,8 +182,16 @@ class Map:
             
         else:
             print ("Can't move out of map")
-
-
+        
+        # CHECK IF A BOX IS IN THE STORAGE POINT
+        if self.in_storage() != False:
+            box_in_storage = self.in_storage()
+            self.remover(box_in_storage)
+        
+        if self.boxes == []:
+            print ("You win!")
+            return False
+            
 
     
     
@@ -179,12 +200,6 @@ class Map:
 map1 = Map("game_cfg.csv")
 while True:
     map1.printer()
-    map1.process_input()
-    
-#while True:
-#    inp = input("Run?").upper()
-#    if inp != "X":       
-#        map1.printer()
-#        map1.process_input()
-#    else:
-#        break
+    run = map1.process_input()
+    if run == False:
+        break
