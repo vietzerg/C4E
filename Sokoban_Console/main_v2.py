@@ -105,7 +105,7 @@ class Map:
                 if box.x == boxes_to_move[-1].x + 1 and box.y == boxes_to_move[-1].y:
                     boxes_to_move.append(box)
         elif dx == -1:
-            for box in self.boxes:
+            for box in reversed(self.boxes):
                 if box.x == boxes_to_move[-1].x - 1 and box.y == boxes_to_move[-1].y:
                     boxes_to_move.append(box)
         elif dy == 1:
@@ -113,7 +113,7 @@ class Map:
                 if box.y == boxes_to_move[-1].y + 1 and box.x == boxes_to_move[-1].x:
                     boxes_to_move.append(box)
         elif dy == -1:
-            for box in self.boxes:
+            for box in reversed(self.boxes):
                 if box.y == boxes_to_move[-1].y - 1 and box.x == boxes_to_move[-1].x:
                     boxes_to_move.append(box)
         
@@ -123,6 +123,7 @@ class Map:
     def move_boxes(self, boxes_to_move, dx, dy):
         for box in boxes_to_move:
             box.move(dx, dy)
+            
     
     # CHECK IF A BOX IS IN A STORAGE POINT
     def in_storage(self):
@@ -165,6 +166,8 @@ class Map:
         if self.in_boxes(C_next) is not False:
             box_pushed = self.in_boxes(C_next)
             boxes_to_move = self.get_boxes_to_move(box_pushed, dx, dy)
+            for box in boxes_to_move:
+                print (box.x, box.y)
             last_box_next = boxes_to_move[-1].next_pos(dx ,dy)
             
             # CHECK IF THE LAST BOX IN THE BOX SERIES IS IN MAP AND HITS AN OBSTACLE
