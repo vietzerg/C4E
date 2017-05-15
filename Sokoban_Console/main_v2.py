@@ -165,7 +165,6 @@ class Map:
         elif move == "BW":
             if self.mana > 0:
                 dx,dy = 0,-3
-                #self.mana -= 1
             else:
                 dx,dy = 0,-1
                 print ("Not enough mana! Moved one step instead")
@@ -173,7 +172,6 @@ class Map:
         elif move == "BS":
             if self.mana > 0:
                 dx,dy = 0,3
-                #self.mana -= 1
             else:
                 dx,dy = 0,1
                 print ("Not enough mana!! Moved one step instead")
@@ -181,7 +179,6 @@ class Map:
         elif move == "BA":
             if self.mana > 0:
                 dx,dy = -3,0
-                #self.mana -= 1
             else:
                 dx,dy = -1,0
                 print ("Not enough mana!! Moved one step instead")
@@ -189,7 +186,6 @@ class Map:
         elif move == "BD":
             if self.mana > 0:
                 dx,dy = 3,0
-                #self.mana -= 1
             else:
                 dx,dy = 1,0
                 print ("Not enough mana!! Moved one step instead.")
