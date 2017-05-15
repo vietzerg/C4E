@@ -1,0 +1,627 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"sel",
+				"selectAll"
+			],
+			[
+				"sele",
+				"selectAll"
+			],
+			[
+				"sur",
+				"survival_buttons"
+			],
+			[
+				"tr",
+				"transition"
+			],
+			[
+				"survi",
+				"survival_state"
+			],
+			[
+				"NES",
+				"nest_age"
+			],
+			[
+				"entr",
+				"entries"
+			],
+			[
+				"selec",
+				"selectAll"
+			],
+			[
+				"att",
+				"attr"
+			],
+			[
+				"update",
+				"update"
+			],
+			[
+				"select",
+				"select"
+			],
+			[
+				"year",
+				"years"
+			],
+			[
+				"year_i",
+				"year_interval"
+			],
+			[
+				"up",
+				"update"
+			],
+			[
+				"fil",
+				"fill"
+			],
+			[
+				"cir",
+				"circle"
+			],
+			[
+				"filter",
+				"filtered"
+			],
+			[
+				"circl",
+				"circles"
+			],
+			[
+				"a",
+				"attendance"
+			],
+			[
+				"en",
+				"enter"
+			],
+			[
+				"v",
+				"values"
+			],
+			[
+				"nes",
+				"nested"
+			],
+			[
+				"sle",
+				"selectAll"
+			],
+			[
+				"cet",
+				"center_y"
+			],
+			[
+				"cen",
+				"center_x"
+			],
+			[
+				"to",
+				"total"
+			],
+			[
+				"pro",
+				"projection"
+			],
+			[
+				"cout",
+				"count_scale"
+			],
+			[
+				"for",
+				"for\tfor (…) {…} (Improved Native For-Loop)"
+			],
+			[
+				"coun",
+				"count_axis"
+			],
+			[
+				"tex",
+				"text"
+			],
+			[
+				"strok",
+				"stroke"
+			],
+			[
+				"at",
+				"attr"
+			],
+			[
+				"fun",
+				"function"
+			],
+			[
+				"time",
+				"time_scale"
+			],
+			[
+				"trans",
+				"transform"
+			],
+			[
+				"count",
+				"count_scale"
+			],
+			[
+				"fn",
+				"function"
+			],
+			[
+				"count_",
+				"count_extent"
+			],
+			[
+				"add",
+				"addSeries"
+			],
+			[
+				"ge",
+				"gender"
+			],
+			[
+				"nu",
+				"number"
+			],
+			[
+				"tm",
+				"time"
+			],
+			[
+				"met",
+				"meta\tTag"
+			],
+			[
+				"masa",
+				"masahiro"
+			],
+			[
+				"trung",
+				"trungvideo"
+			],
+			[
+				"alin",
+				"align-self"
+			],
+			[
+				"me",
+				"meta\tTag"
+			],
+			[
+				"this",
+				"This"
+			],
+			[
+				"alig",
+				"align-self"
+			],
+			[
+				"bu",
+				"blockquote\tTag"
+			],
+			[
+				"rgb",
+				"rgb()"
+			],
+			[
+				"bor",
+				"border-radius"
+			],
+			[
+				"border",
+				"border"
+			],
+			[
+				"st",
+				"style\tTag"
+			],
+			[
+				"beat",
+				"beatbox"
+			],
+			[
+				"align",
+				"align-items"
+			],
+			[
+				"in",
+				"inline-block"
+			],
+			[
+				"te",
+				"text-align"
+			],
+			[
+				"back",
+				"background-size"
+			],
+			[
+				"wid",
+				"width"
+			],
+			[
+				"b",
+				"button"
+			],
+			[
+				"p",
+				"p\tTag"
+			],
+			[
+				"size",
+				"size"
+			],
+			[
+				"font-s",
+				"font-size"
+			],
+			[
+				"background-",
+				"background-size"
+			],
+			[
+				"ti",
+				"title\tTag"
+			],
+			[
+				"vib",
+				"vib_gv"
+			],
+			[
+				"fi",
+				"fibonaci_fix"
+			],
+			[
+				"re",
+				"result"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 455.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"Snippet: ",
+				"Snippet: If Condition"
+			]
+		],
+		"width": 549.0
+	},
+	"console":
+	{
+		"height": 162.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+	],
+	"file_history":
+	[
+		"/C/Users/PA/Documents/Anaconda/C4E repository/Sokoban_Console/code_backup.txt",
+		"/C/Users/PA/Documents/Anaconda/C4E repository/Sokoban_Console/game_cfg.csv",
+		"/C/Users/PA/Documents/Anaconda/C4E repository/Sokoban_Console/main_v2.py",
+		"/C/Users/PA/Documents/Anaconda/Data Wrangling/find_cars.py",
+		"/C/Users/PA/Documents/Anaconda/C4E repository/Week 5/game_cfg.csv",
+		"/C/Users/PA/Documents/Anaconda/C4E repository/Week 5/push_box_with_game_config.py",
+		"/C/Users/PA/Documents/Anaconda/C4E repository/Week 4/pushing_boxes.py",
+		"/C/Users/PA/Documents/Anaconda/Data Wrangling/audit.py",
+		"/D/Study/Technology Applications in Banking and Finance/options_code.txt",
+		"/C/Users/PA/Documents/Anaconda/Data Wrangling/cities.csv",
+		"/D/Study/Technology Applications in Banking and Finance/options_profit_code",
+		"/C/Users/PA/Documents/Anaconda/C4E repository/Week 4/game_cfg.csv",
+		"/C/Users/PA/Documents/Anaconda/C4E repository/Week 4/5-5.py",
+		"/C/Users/PA/Documents/Anaconda/hm2011.csv",
+		"/C/Users/PA/Documents/Anaconda/ct2011 font errors detected.csv",
+		"/D/Study/Data Analysis/Data Visualization/Self-made/Titanic/titanic.html",
+		"/C/Users/PA/Documents/Anaconda/Data Wrangling/2013_Max_Loads.csv",
+		"/C/Users/PA/Documents/Anaconda/Data Wrangling/patent.data",
+		"/C/Users/PA/Documents/Anaconda/C4E repository/Week 1/14-4.py",
+		"/C/Users/PA/Documents/Anaconda/C4E repository/Week 1/celcius_to_fahrenheit.py",
+		"/D/Study/NCKH/DATA/Industrial Organization/Stata_2011/CSVs - Old files - Backup/ct2011 (font errors detected).csv",
+		"/C/Users/PA/Desktop/filenoikeep11test.csv",
+		"/D/Study/NCKH/DATA/Industrial Organization/Stata_2011/CSVs/filenoikeep11.csv",
+		"/D/Study/NCKH/DATA/Industrial Organization/Stata_2011/CSVs/ks2011.csv",
+		"/C/Users/PA/Documents/Anaconda/Data Wrangling/autos.csv",
+		"/D/Study/NCKH/DATA/Industrial Organization/Stata_2011/CSVs/gd2011.csv",
+		"/D/Study/Data Analysis/Level 12.html",
+		"/C/Users/PA/Documents/Anaconda/C4E repository/README.md",
+		"/C/Users/PA/Documents/Anaconda/C4E repository/Week 2/Answer questions of Chapter 11.md",
+		"/C/Users/PA/Documents/Anaconda/homework-28-04/sheep.py",
+		"/C/Users/PA/Desktop/23-4-17.py",
+		"/D/Study/Data Analysis/phulevel12.php.html",
+		"/C/Users/PA/Desktop/NCKH - Topic choosing/The stability of survival model parameter estimates for predicting the PD.htm",
+		"/C/Users/PA/Desktop/SME13_web/SME13_web.dta",
+		"/C/Users/PA/Documents/Anaconda/C4E/turtle_circle.py",
+		"/C/Users/PA/Desktop/tes.py",
+		"/C/Users/PA/Documents/Anaconda/Data Wrangling/patent.data-0.data",
+		"/C/Users/PA/Documents/Anaconda/Data Wrangling/patent.data-1.data",
+		"/C/Users/PA/Documents/Anaconda/Data Wrangling/patent.data-3",
+		"/C/Users/PA/Documents/Anaconda/Data Wrangling/patent.data.xml",
+		"/C/Users/PA/Documents/Anaconda/Data Wrangling/popular-viewed-1.json",
+		"/C/Users/PA/Documents/Anaconda/Data Wrangling/data_elements.html",
+		"/C/Users/PA/Documents/Anaconda/Data Wrangling/exampleresearcharticle.xml",
+		"/D/Study/Stock Analysis/CafeF.SolieuGD.Upto16032017/CafeF.HNX.Upto16.03.2017.csv",
+		"/C/Users/PA/Documents/Anaconda/tsla.csv",
+		"/D/Study/Data Analysis/Data Visualization/04_globe_nest/04_globe_nest.html",
+		"/C/Users/PA/Documents/Anaconda/Data Wrangling/example.csv",
+		"/D/Study/Data Analysis/Data Wrangling/Lesson 1/beatles-discography.csv",
+		"/C/Users/PA/Documents/Anaconda/Data Wrangling/745090.csv",
+		"/D/Study/Stock Analysis/CafeF.SolieuGD.Upto16032017/CafeF.UPCOM.Upto16.03.2017.csv",
+		"/D/Study/Stock Analysis/CafeF.SolieuGD.Upto16032017/CafeF.HSX.Upto16.03.2017.csv",
+		"/D/Study/Data Analysis/Data Visualization/data-vis-complete-code-files/Data_Vis_Complete_Code_Files/lesson4/12_globe_filtering.html",
+		"/D/Study/Data Analysis/Data Visualization/data-vis-complete-code-files/Data_Vis_Complete_Code_Files/lesson4/14_globe_update1930.html",
+		"/D/Study/Data Analysis/Data Visualization/data-vis-complete-code-files/Data_Vis_Complete_Code_Files/lesson4/21_globe_delay_buttons_display.html",
+		"/D/Study/Data Analysis/Data Visualization/Self-made/Titanic/dataset/train.csv",
+		"/D/Study/Data Analysis/Data Visualization/04_globe_nest/d3/d3.min.js",
+		"/D/Study/Data Analysis/Data Visualization/04_globe_nest/d3/d3.js",
+		"/D/Study/Data Analysis/Data Visualization/data-vis-complete-code-files/Data_Vis_Complete_Code_Files/lesson4/22_globe_adding_events.html",
+		"/D/Study/Data Analysis/Data Visualization/data-vis-complete-code-files/Data_Vis_Complete_Code_Files/lesson4/20_globe_interactivity.html",
+		"/D/Study/Data Analysis/Data Visualization/Self-made/Mini-Project2/shopping_simple_copied_fromD3.html",
+		"/D/Study/Data Analysis/Data Visualization/data-vis-complete-code-files/Data_Vis_Complete_Code_Files/lesson4/08_globe_sizing_circles.html",
+		"/D/Study/Data Analysis/Data Visualization/04_globe_nest/world_countries.json",
+		"/D/Study/Data Analysis/Data Visualization/04_globe_nest/world_cup_geo.tsv",
+		"/D/Study/Data Analysis/Data Visualization/Self-made/Mini-Project2/shopping_simple.html",
+		"/D/Study/Data Analysis/Data Visualization/01_globe/01_globe.html",
+		"/D/Study/Data Analysis/Data Visualization/data-vis-complete-code-files/Data_Vis_Complete_Code_Files/lesson3/L3_basic_charts.html",
+		"/D/Study/Data Analysis/Data Visualization/data-vis-complete-code-files/Data_Vis_Complete_Code_Files/lesson4/07_globe_adding_circles.html",
+		"/D/Study/Data Analysis/Data Visualization/01_globe/world_countries.json",
+		"/D/Study/Data Analysis/Data Visualization/Self-made/Mini-Project2/shopping_simple.csv",
+		"/D/Study/Data Analysis/Data Visualization/Self-made/Mini-Project2/L3_basic_charts.html",
+		"/D/Study/Data Analysis/Data Visualization/Self-made/Mini-Project2/d3tips/index.js",
+		"/D/Study/Data Analysis/Data Visualization/Self-made/Mini-Project2/d3/d3.tip.v0.6.3.js",
+		"/D/Study/Data Analysis/Data Visualization/Self-made/Mini-Project2/shopping.html",
+		"/D/Study/Data Analysis/Data Visualization/data-vis-complete-code-files/Data_Vis_Complete_Code_Files/lesson3/L3_basic_charts_css.html",
+		"/D/Study/Data Analysis/Data Visualization/Self-made/Mini-Project2/shopping.csv",
+		"/D/Study/Data Analysis/Data Visualization/Self-made/Mini-Project2/shopping_time.csv",
+		"/D/Study/Data Analysis/Data Visualization/data-vis-complete-code-files/Data_Vis_Complete_Code_Files/lesson3/world_cup_geo.tsv",
+		"/D/Study/Data Analysis/Data Visualization/data-vis-complete-code-files/Data_Vis_Complete_Code_Files/lesson3/L3_basic_charts_updated.html",
+		"/C/Users/PA/Desktop/JordanSchor_Dauntless_302570620.mp3",
+		"/D/Study/Data Analysis/Data Visualization/world_cup_geo.tsv",
+		"/D/Study/Data Analysis/Data Visualization/data-vis-complete-code-files/Data_Vis_Complete_Code_Files/lesson3/L3_basic_charts_final.html",
+		"/D/Study/Data Analysis/test2.html",
+		"/D/Study/Data Analysis/Data Visualization/basic_charts_final/basic_charts_final.html",
+		"/D/Study/Data Analysis/Data Visualization/basic_charts/basic_charts.html",
+		"/D/Study/Data Analysis/Data Visualization/basic_charts_final/world_cup.tsv",
+		"/D/Study/Data Analysis/shopping.html",
+		"/D/Study/Data Analysis/text.csv",
+		"/D/Study/Data Analysis/L3_basic_charts.html",
+		"/D/Study/Data Analysis/world_cup.tsv",
+		"/D/Study/Data Analysis/ntd.csv",
+		"/D/Study/Data Analysis/Data Visualization/data-vis-complete-code-files/Data_Vis_Complete_Code_Files/lesson3/world_cup.tsv",
+		"/D/Study/Data Analysis/text.tsv",
+		"/D/Study/Data Analysis/shopping.csv",
+		"/C/Users/PA/Desktop/test.html",
+		"/D/Study/Data Analysis/Data Visualization/data-vis-complete-code-files/Data_Vis_Complete_Code_Files/lesson2/basic_charts_final.html",
+		"/D/Study/Data Analysis/test.html",
+		"/C/Users/PA/Desktop/BLI_06022017044343485.csv",
+		"/D/Study/Data Analysis/Data Visualization/Self-made/Mini-Project2/shopping_time.html",
+		"/D/Study/Data Analysis/Data Visualization/Lets make a bar chart - Mike/Lets_make_a_bar_chart_Mike.html",
+		"/D/Study/Data Analysis/Data Visualization/Touching HTML, CSS/favorite_beatbox_routines.html",
+		"/D/Study/Data Analysis/Data Visualization/Touching HTML, CSS/favorite_beatbox_routines (Nam edited)/favorite_beatbox_routines.html",
+		"/D/Study/Data Analysis/Data Visualization/Easy - Make a bar Chart - Udacity/barChart/index.html",
+		"/D/Study/Data Analysis/Data Visualization/Lets make a bar chart - Mike/data.tsv",
+		"/D/Study/Data Analysis/Data Visualization/Lets_make_a_bar_chart_Mike.html",
+		"/D/Study/Data Analysis/Data Visualization/Easy - Make a bar Chart/barChart/index.html",
+		"/D/Study/Data Analysis/Data Visualization/barChart/barChart/index.html",
+		"/D/Study/Data Analysis/Data Visualization/barChart/barChart/README.md",
+		"/D/Study/Data Analysis/Data Visualization/Touching HTML, CSS/trying to position.html",
+		"/E/DA_nobi/equationsolver.c",
+		"/D/Study/Data Analysis/Data Visualization/barChart/barChart/data.tsv",
+		"/D/Study/Data Analysis/Data Visualization/Touching HTML, CSS/test.html",
+		"/D/Study/Data Analysis/Data Visualization/Touching HTML, CSS/battle-siren-remix-project-2-html/battle siren remix project 2 html (Nam edited).html",
+		"/D/Study/Data Analysis/Data Visualization/Touching HTML, CSS/battle siren remix project 2 html.html",
+		"/D/Study/Data Analysis/Data Visualization/Touching HTML, CSS/battle-siren-remix-project-2-html/trying to position.html",
+		"/D/Study/Data Analysis/Data Visualization/Touching HTML, CSS/battle-siren-remix-project-2-html/battle siren remix project 2 html.html",
+		"/C/Users/PA/Documents/my first HTML doc - first site =)).html",
+		"/C/Users/PA/Desktop/Quiz_ Madura, Financial Markets and Institutions 7e, Chapter 13.html",
+		"/D/Study/Data Analysis/Data Visualization/data-vis-demo/data_vis_demo/d3_demo.css",
+		"/C/Users/PA/Documents/test.py",
+		"/C/Users/PA/Documents/testing2.py",
+		"/C/Users/PA/Documents/Anaconda/testing.py",
+		"/C/Users/PA/Documents/D3_Data_visualization_live-master/index1.html",
+		"/C/Users/PA/Documents/D3_Data_visualization_live-master.zip",
+		"/C/Users/PA/Documents/D3_Data_visualization_live-master/package.json",
+		"/C/Users/PA/Documents/testtt.py",
+		"/C/Users/PA/Documents/testtt",
+		"/C/Users/PA/Documents/test"
+	],
+	"find":
+	{
+		"height": 28.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"49118",
+			"\"\"\"",
+			"<?xml version=\"1.0\" encoding=\"UTF-8\"?>",
+			"FL",
+			"108,289",
+			"108289",
+			"ATL",
+			"dataTDRight",
+			"Standard Thumbnail",
+			"Professors, We Need You!",
+			"Opinion",
+			"|",
+			"-",
+			"exit",
+			".map",
+			"title",
+			"hover",
+			"svg",
+			"functor",
+			"letter",
+			"frequency",
+			"tip",
+			"radius",
+			"myChart",
+			"content",
+			"width",
+			"button",
+			".csv",
+			"n",
+			"def",
+			"vib"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"\"\"",
+			","
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": false
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		},
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 28.0
+	},
+	"input":
+	{
+		"height": 38.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			0.5,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "Packages/Python/Python.sublime-build",
+	"project": "Sokoban_C.sublime-project",
+	"replace":
+	{
+		"height": 52.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"C:\\Users\\PA\\Documents\\test"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 180.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

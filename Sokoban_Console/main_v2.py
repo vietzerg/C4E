@@ -1,4 +1,5 @@
 import csv
+       
 
 class SKObject:
     def __init__(self, x, y, char):
@@ -37,7 +38,6 @@ class Map:
         self.storages = []
         self.blinks = []
         self.objects = []
-        #self.objects_dict = {"chaien": 0, "obstacles": [], "boxes": [], "storages": []}
         with open(config_file, "r") as csvfile:
             csvreader = csv.DictReader(csvfile)
             for row in csvreader:
@@ -74,7 +74,7 @@ class Map:
         return False
     
     # PRINT MAP
-    def printer(self):
+    def printer(self):        
         for y in range(self.height):
             for x in range(self.width):
                 if not self.print_objects(x, y): # IF NO OJBECT IS PRINTED, THEN...
@@ -93,9 +93,8 @@ class Map:
         for obj in that_object_list:
             if obj.x == position_tuple[0] and obj.y == position_tuple[1]:
                 return obj
-        return False   
+        return False
 
-            
     # GET A LIST BOXES TO MOVE (IN CASE CHARACTER PUSHES MULTIPLE BOXES)
     def get_boxes_to_move(self, box_pushed, dx, dy):
         boxes_to_move = [box_pushed]
@@ -122,8 +121,7 @@ class Map:
     # MOVE MULTIPLE BOXES
     def move_boxes(self, boxes_to_move, dx, dy):
         for box in boxes_to_move:
-            box.move(dx, dy)
-            
+            box.move(dx, dy)            
     
     # CHECK IF A BOX IS IN A STORAGE POINT
     def in_storage(self):
@@ -246,12 +244,10 @@ class Map:
         if self.boxes == []:
             print ("You win!")
             return False
-            
+        
+        print ("Your mana:",self.mana)     
 
     
-    
-    
-        
 map1 = Map("game_cfg.csv")
 while True:
     map1.printer()
