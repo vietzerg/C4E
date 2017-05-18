@@ -4,6 +4,82 @@
 		"selected_items":
 		[
 			[
+				"el",
+				"elif"
+			],
+			[
+				"d",
+				"d_col"
+			],
+			[
+				"d_",
+				"d_col"
+			],
+			[
+				"mario",
+				"mario_row"
+			],
+			[
+				"sqa",
+				"square_width"
+			],
+			[
+				"mar",
+				"mario_col"
+			],
+			[
+				"nex",
+				"next_mario_row"
+			],
+			[
+				"box",
+				"box_col"
+			],
+			[
+				"next",
+				"next_mario_row"
+			],
+			[
+				"col",
+				"col_count"
+			],
+			[
+				"co",
+				"col_count"
+			],
+			[
+				"sq",
+				"square_width"
+			],
+			[
+				"row",
+				"row_count"
+			],
+			[
+				"squ",
+				"square_height"
+			],
+			[
+				"squar",
+				"square_width"
+			],
+			[
+				"sqau",
+				"square_height"
+			],
+			[
+				"r",
+				"row_count"
+			],
+			[
+				"mari",
+				"mario_image"
+			],
+			[
+				"c",
+				"clock"
+			],
+			[
 				"sel",
 				"selectAll"
 			],
@@ -287,6 +363,15 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "main.py",
+			"settings":
+			{
+				"buffer_size": 3174,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		}
 	],
 	"build_system": "Packages/Python/Python.sublime-build",
 	"build_system_choices":
@@ -344,9 +429,17 @@
 	},
 	"expanded_folders":
 	[
+		"/C/Users/PA/Documents/Anaconda/C4E repository/Sokoban_GUI",
+		"/C/Users/PA/Documents/Anaconda/C4E repository/Sokoban_GUI/sprites"
 	],
 	"file_history":
 	[
+		"/C/Users/PA/Documents/Anaconda/C4E repository/Sokoban_GUI/sprites/square.png",
+		"/C/Users/PA/Documents/Anaconda/C4E repository/Sokoban_GUI/sprites/mario.png",
+		"/C/Users/PA/Documents/Anaconda/C4E repository/Sokoban_GUI/sprites/win.png",
+		"/C/Users/PA/Documents/Anaconda/C4E repository/Sokoban_GUI/sprites/lose.png",
+		"/C/Users/PA/Documents/Anaconda/C4E repository/Sokoban_GUI/sprites/gate.png",
+		"/C/Users/PA/Documents/Anaconda/C4E repository/Sokoban_GUI/sprites/box.png",
 		"/C/Users/PA/Documents/Anaconda/primer-dataset.json",
 		"/C/Users/PA/AppData/Roaming/Sublime Text 3/Packages/Pretty JSON/Pretty JSON.sublime-settings",
 		"/C/Users/PA/Documents/Anaconda/prettfied_json.json",
@@ -468,13 +561,7 @@
 		"/C/Users/PA/Documents/my first HTML doc - first site =)).html",
 		"/C/Users/PA/Desktop/Quiz_ Madura, Financial Markets and Institutions 7e, Chapter 13.html",
 		"/D/Study/Data Analysis/Data Visualization/data-vis-demo/data_vis_demo/d3_demo.css",
-		"/C/Users/PA/Documents/test.py",
-		"/C/Users/PA/Documents/testing2.py",
-		"/C/Users/PA/Documents/Anaconda/testing.py",
-		"/C/Users/PA/Documents/D3_Data_visualization_live-master/index1.html",
-		"/C/Users/PA/Documents/D3_Data_visualization_live-master.zip",
-		"/C/Users/PA/Documents/D3_Data_visualization_live-master/package.json",
-		"/C/Users/PA/Documents/testtt.py"
+		"/C/Users/PA/Documents/test.py"
 	],
 	"find":
 	{
@@ -492,6 +579,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"y",
+			"x",
 			"49118",
 			"\"\"\"",
 			"<?xml version=\"1.0\" encoding=\"UTF-8\"?>",
@@ -530,6 +619,8 @@
 		"regex": false,
 		"replace_history":
 		[
+			"mario_y",
+			"mario_x",
 			"\"\"",
 			","
 		],
@@ -542,13 +633,71 @@
 	"groups":
 	[
 		{
+			"selected": 0,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "main.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3174,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3081,
+								3081
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 1512.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
 			]
 		},
 		{
+			"selected": 0,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "main.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3174,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								494,
+								494
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -599,10 +748,10 @@
 		"height": 0.0
 	},
 	"pinned_build_system": "Packages/Python/Python.sublime-build",
-	"project": "Sokoban_C.sublime-project",
+	"project": "Sokoban_GUI.sublime-project",
 	"replace":
 	{
-		"height": 52.0
+		"height": 80.0
 	},
 	"save_all_on_build": true,
 	"select_file":
