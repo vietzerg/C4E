@@ -14,6 +14,7 @@ mario_image = pygame.image.load("sprites/mario.png")
 square_image = pygame.image.load("sprites/square.png")
 box_image = pygame.image.load("sprites/box.png")
 storage_image = pygame.image.load("sprites/gate.png")
+win_announce = pygame.image.load("sprites/win.png")
 
 square_width = square_image.get_width()
 square_height = square_image.get_height()
@@ -94,6 +95,14 @@ while loop:
 		box_y = box.y * square_height - square_height /2 + 20
 		screen.blit(box_image, (box_x, box_y))
 
+	for storage in map1.storages:
+		storage_x = storage.x * square_width - square_width /2 + 20
+		storage_y = storage.y * square_height - square_height /2 + 20
+		screen.blit(storage_image, (storage_x, storage_y))
+
+	if map1.boxes == []:
+		screen.blit(win_announce, (col_count * square_width / 2, row_count * square_height / 2))
+		loop = False
 	pygame.display.flip()
 	clock.tick(60)
 pygame.quit()
