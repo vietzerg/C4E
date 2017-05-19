@@ -367,7 +367,7 @@
 			"file": "main.py",
 			"settings":
 			{
-				"buffer_size": 3174,
+				"buffer_size": 3165,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -642,15 +642,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3174,
+						"buffer_size": 3165,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3081,
-								3081
+								2517,
+								2517
 							]
 						],
 						"settings":
@@ -658,7 +658,7 @@
 							"syntax": "Packages/Python/Python.sublime-syntax"
 						},
 						"translation.x": 0.0,
-						"translation.y": 1512.0,
+						"translation.y": 864.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -676,7 +676,7 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3174,
+						"buffer_size": 3165,
 						"regions":
 						{
 						},

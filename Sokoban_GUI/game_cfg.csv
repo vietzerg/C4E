@@ -1,0 +1,13 @@
+type,value,x,y
+height,10,,
+width,10,,
+obstacle,,4,0
+obstacle,,0,4
+box,,4,3
+box,,4,4
+box,,4,5
+box,,4,6
+storage,,4,2
+powerup,,1,0
+character,,2,2
+blink,,1,1
