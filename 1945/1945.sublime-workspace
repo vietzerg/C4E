@@ -4,6 +4,34 @@
 		"selected_items":
 		[
 			[
+				"pl",
+				"play_bullet"
+			],
+			[
+				"play",
+				"play_bullet"
+			],
+			[
+				"game",
+				"game_objects"
+			],
+			[
+				"game_",
+				"game_object"
+			],
+			[
+				"back",
+				"background"
+			],
+			[
+				"b",
+				"background_y2"
+			],
+			[
+				"bac",
+				"background_image"
+			],
+			[
 				"mar",
 				"mario_image"
 			],
@@ -336,16 +364,8 @@
 				"text-align"
 			],
 			[
-				"back",
-				"background-size"
-			],
-			[
 				"wid",
 				"width"
-			],
-			[
-				"b",
-				"button"
 			],
 			[
 				"p",
@@ -384,19 +404,60 @@
 	"buffers":
 	[
 		{
-			"file": "main_classes.py",
+			"contents": "import pygame\nfrom gamemanager import *\nfrom InputManager import *\nfrom player import *\nfrom background import *\n\nloop = True\n\ndef setup_pygame():\n    pygame.init()\n    screen = pygame.display.set_mode((600, 800))\n    pygame.display.set_caption(\"1945 War\")\n    return screen\n\ndef handle_exit_event(events):\n    for event in events:\n        if event.type == pygame.QUIT:\n            return False\n    return True\n\ndef run():\n    game_manager.run()\n\ndef draw(screen):\n    screen.fill((0, 0, 0))\n    game_manager.draw(screen)\n\nscreen = setup_pygame()\nclock = pygame.time.Clock()\ngame_manager.add(Background())\ngame_manager.add(Player())\n                \n\nwhile loop:\n    # WE CAN ONLY GET EVENTS ONCE IN A LOOP\n    events = pygame.event.get()\n\n    # HANDLE QUIT EVENT\n    for event in events:\n        loop = handle_exit_event(events)\n\n    input_manager.run(events)\n\n    ## UPDATE LOGIC\n    run()\n\n    ## UPDATE GRAPHICS\n    draw(screen)\n\n    ## DELAY BY FRAMERATE\n    pygame.display.flip()\n    clock.tick(120)\n\npygame.quit()",
+			"file": "main.py",
+			"file_size": 989,
+			"file_write_time": 131396809885367617,
 			"settings":
 			{
-				"buffer_size": 9998,
+				"buffer_size": 1020,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "background.py",
+			"settings":
+			{
+				"buffer_size": 450,
+				"encoding": "UTF-8",
+				"line_ending": "Windows",
+				"name": "import pygame"
+			}
+		},
+		{
+			"file": "player.py",
+			"settings":
+			{
+				"buffer_size": 729,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "main.py",
+			"file": "InputManager.py",
 			"settings":
 			{
-				"buffer_size": 2415,
+				"buffer_size": 1055,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "class GameManager():\n\t\"\"\"docstring for GameManager\"\"\"\n\tdef __init__(self):\n\t\tself.game_objects = []\n\n\tdef add(self, game_object):\n\t\tself.game_objects.append(game_object)\n\n\tdef run(self):\n\t\tfor game_object in self.game_objects:\n\t\t\tgame_object.run()\n\n\tdef draw(self, screen):\n\t\tfor game_object in self.game_objects:\n\t\t\tgame_object.draw(screen)\n\ngame_manager = GameManager()",
+			"file": "gamemanager.py",
+			"file_size": 395,
+			"file_write_time": 131396796768714958,
+			"settings":
+			{
+				"buffer_size": 371,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "playerbullet.py",
+			"settings":
+			{
+				"buffer_size": 281,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -458,13 +519,16 @@
 	},
 	"expanded_folders":
 	[
-		"/C/Users/PA/Documents/Anaconda/C4E repository/Sokoban_GUI",
-		"/C/Users/PA/Documents/Anaconda/C4E repository/Sokoban_GUI/sprites"
+		"/C/Users/PA/Documents/Anaconda/C4E repository/1945",
+		"/C/Users/PA/Documents/Anaconda/C4E repository/1945/resources"
 	],
 	"file_history":
 	[
-		"/C/Users/PA/Documents/Anaconda/C4E repository/Sokoban_GUI/game_cfg.csv",
+		"/C/Users/PA/Documents/Anaconda/C4E repository/1945/InputManager.py",
+		"/C/Users/PA/Documents/Anaconda/C4E repository/1945/main.py",
+		"/C/Users/PA/Documents/Anaconda/C4E repository/Sokoban_GUI/main_classes.py",
 		"/C/Users/PA/Documents/Anaconda/C4E repository/Sokoban_GUI/main.py",
+		"/C/Users/PA/Documents/Anaconda/C4E repository/Sokoban_GUI/game_cfg.csv",
 		"/C/Users/PA/Documents/Anaconda/C4E repository/Sokoban_GUI/sprites/square.png",
 		"/C/Users/PA/Documents/Anaconda/C4E repository/Sokoban_GUI/sprites/mario.png",
 		"/C/Users/PA/Documents/Anaconda/C4E repository/Sokoban_GUI/sprites/win.png",
@@ -587,14 +651,11 @@
 		"/D/Study/Data Analysis/Data Visualization/Touching HTML, CSS/test.html",
 		"/D/Study/Data Analysis/Data Visualization/Touching HTML, CSS/battle-siren-remix-project-2-html/battle siren remix project 2 html (Nam edited).html",
 		"/D/Study/Data Analysis/Data Visualization/Touching HTML, CSS/battle siren remix project 2 html.html",
-		"/D/Study/Data Analysis/Data Visualization/Touching HTML, CSS/battle-siren-remix-project-2-html/trying to position.html",
-		"/D/Study/Data Analysis/Data Visualization/Touching HTML, CSS/battle-siren-remix-project-2-html/battle siren remix project 2 html.html",
-		"/C/Users/PA/Documents/my first HTML doc - first site =)).html",
-		"/C/Users/PA/Desktop/Quiz_ Madura, Financial Markets and Institutions 7e, Chapter 13.html"
+		"/D/Study/Data Analysis/Data Visualization/Touching HTML, CSS/battle-siren-remix-project-2-html/trying to position.html"
 	],
 	"find":
 	{
-		"height": 28.0
+		"height": 33.0
 	},
 	"find_in_files":
 	{
@@ -608,6 +669,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"*\n",
 			"y",
 			"x",
 			"49118",
@@ -662,95 +724,94 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "main_classes.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 9998,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								6185,
-								6185
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
 					"file": "main.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2415,
+						"buffer_size": 1020,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2087,
-								2087
+								860,
+								860
 							]
 						],
 						"settings":
 						{
+							"history_list_is_closing": true,
 							"syntax": "Packages/Python/Python.sublime-syntax",
-							"translate_tabs_to_spaces": false
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 450.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 4,
 					"type": "text"
 				}
 			]
 		},
 		{
-			"selected": 0,
+			"selected": 1,
 			"sheets":
 			[
 				{
 					"buffer": 1,
-					"file": "main.py",
+					"file": "background.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2415,
+						"buffer_size": 450,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								418,
-								418
+								211,
+								211
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"translate_tabs_to_spaces": false
+							"auto_name": "import pygame",
+							"syntax": "Packages/Python/Python.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "player.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 729,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								66,
+								66
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -760,33 +821,88 @@
 					"type": "text"
 				},
 				{
-					"buffer": 0,
-					"file": "main_classes.py",
+					"buffer": 3,
+					"file": "InputManager.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 9998,
+						"buffer_size": 1055,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								9998,
-								9853
+								283,
+								1023
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/Python/Python.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 3640.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "gamemanager.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 371,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								341,
+								341
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "playerbullet.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 281,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								218,
+								281
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
 					"type": "text"
 				}
 			]
@@ -794,7 +910,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 28.0
+		"height": 33.0
 	},
 	"input":
 	{
@@ -839,10 +955,10 @@
 		"height": 0.0
 	},
 	"pinned_build_system": "Packages/Python/Python.sublime-build",
-	"project": "Sokoban_GUI.sublime-project",
+	"project": "1945.sublime-project",
 	"replace":
 	{
-		"height": 80.0
+		"height": 62.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -876,7 +992,7 @@
 		],
 		"width": 0.0
 	},
-	"selected_group": 1,
+	"selected_group": 0,
 	"settings":
 	{
 	},
