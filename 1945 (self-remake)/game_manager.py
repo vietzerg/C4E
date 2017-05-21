@@ -51,13 +51,13 @@ class LevelManager:
         self.level = 0
 
     def generate_enemies(self, screen, n):
-        first_enemy = enemy.Enemy(screen.get_width() / 2, -10)
+        first_enemy = enemy.Enemy(screen.get_width() / 2, -5)
         gamemanager.add(first_enemy)
         for i in range(1, n):
-            left_enemy = enemy.Enemy(screen.get_width () / 2 - i*first_enemy.image.get_width(), -10)
+            left_enemy = enemy.Enemy(screen.get_width () / 2 - i*first_enemy.image.get_width(), -5)
             gamemanager.add(left_enemy)
         for i in range(1, n):
-            right_enemy = enemy.Enemy(screen.get_width () / 2 + i*first_enemy.image.get_width(), -10)
+            right_enemy = enemy.Enemy(screen.get_width () / 2 + i*first_enemy.image.get_width(), -5)
             gamemanager.add(right_enemy)
 
     # CHECK IF BULLET HITS A PLANE
