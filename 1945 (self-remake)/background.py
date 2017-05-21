@@ -2,6 +2,7 @@ import pygame
 
 class Background:
     def __init__(self):
+        self.type = "background"
         self.image = pygame.image.load("resources/background.png")
         self.x = 0
         self.y = 0

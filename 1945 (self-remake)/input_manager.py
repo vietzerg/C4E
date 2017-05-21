@@ -6,6 +6,7 @@ class InputManager:
         self.down_pressed = False
         self.left_pressed = False
         self.right_pressed = False
+        self.space_pressed = False
 
     def run(self, events):
         for event in events:
@@ -18,6 +19,8 @@ class InputManager:
                     self.left_pressed = True
                 elif event.key == pygame.K_RIGHT:
                     self.right_pressed = True
+                elif event.key == pygame.K_SPACE:
+                    self.space_pressed = True
             elif event.type == pygame.KEYUP:
                 if event.key == pygame.K_UP:
                     self.up_pressed = False
@@ -27,3 +30,7 @@ class InputManager:
                     self.left_pressed = False
                 elif event.key == pygame.K_RIGHT:
                     self.right_pressed = False
+                elif event.key == pygame.K_SPACE:
+                    self.space_pressed = False
+
+inputmanager = InputManager()
