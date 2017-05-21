@@ -68,6 +68,11 @@ class LevelManager:
                     gamemanager.remover(bullet)
                     plane.alive = False
 
+    def cleanup(self):
+        for plane in gamemanager.planes:
+            if plane.dead_ticker == 5 and plane.alive == False:
+                gamemanager.remover(plane)
+
 
 gamemanager = GameManager()
 levelmanager = LevelManager()

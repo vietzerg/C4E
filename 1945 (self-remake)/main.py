@@ -33,7 +33,7 @@ plr = Player(300, 400)
 plr.main = True
 gamemanager.add(plr)
 
-n = 300
+n = 120
 
 while loop:
     # HANDLE EVENTS + EXIT EVENT
@@ -45,13 +45,16 @@ while loop:
     n-= 1
     if n == 0:
         levelmanager.generate_enemies(screen, 2)
-        n = 150
+        n = 120
 
     inputmanager.run(events)
     run()
 
     # DRAW GRAPHICS
     draw()
+
+    # CLEANUP DESTROYED OBJECTS
+    levelmanager.cleanup()
 
     # CONSTRAINT FRAMERATE
     #print (len(gamemanager.planes))
