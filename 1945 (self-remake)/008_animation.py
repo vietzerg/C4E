@@ -29,7 +29,7 @@ except:
     raise(UserWarning, "i'm unable to load 'cahr9.bmp' form the folder 'data'") # error msg and exit
 
 screen=pygame.display.set_mode((800,480)) # try out larger values and see what happens !
-spritesheet.convert() # convert only works afteer display_setmode is set.
+#spritesheet.convert() # convert only works afteer display_setmode is set.
 screenrect = screen.get_rect()
 background = pygame.Surface((screen.get_size()))
 backgroundrect = background.get_rect()
@@ -48,7 +48,7 @@ print("len:",len(lions))
 for nbr in range(len(lions)):
    lions[nbr].set_colorkey((0,0,0)) # black transparent
    lions[nbr] = lions[nbr].convert_alpha()
-   print("converted nbr", nbr)
+   print("converted nbr", lions[nbr].get_width(), lions[nbr].get_height())
 
 for nbr in range(len(lions)):
     screen.blit(lions[nbr], (nbr*127, 0))  #blit the ball surface on the screen (on top of background)

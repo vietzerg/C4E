@@ -13,24 +13,24 @@ class InputManager:
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_UP:
                     self.up_pressed = True
-                elif event.key == pygame.K_DOWN:
+                if event.key == pygame.K_DOWN:
                     self.down_pressed = True
-                elif event.key == pygame.K_LEFT:
+                if event.key == pygame.K_LEFT:
                     self.left_pressed = True
-                elif event.key == pygame.K_RIGHT:
+                if event.key == pygame.K_RIGHT:
                     self.right_pressed = True
-                elif event.key == pygame.K_SPACE:
+                if event.key == pygame.K_SPACE:
                     self.space_pressed = True
             elif event.type == pygame.KEYUP:
                 if event.key == pygame.K_UP:
                     self.up_pressed = False
-                elif event.key == pygame.K_DOWN:
+                if event.key == pygame.K_DOWN:
                     self.down_pressed = False
-                elif event.key == pygame.K_LEFT:
+                if event.key == pygame.K_LEFT:
                     self.left_pressed = False
-                elif event.key == pygame.K_RIGHT:
+                if event.key == pygame.K_RIGHT:
                     self.right_pressed = False
-                elif event.key == pygame.K_SPACE:
+                if event.key == pygame.K_SPACE:
                     self.space_pressed = False
 
 inputmanager = InputManager()

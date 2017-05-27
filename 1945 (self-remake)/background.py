@@ -1,23 +1,25 @@
 import pygame
+import renderer
+import point
 
 class Background:
-    def __init__(self):
+    def __init__(self, x_start, y_start):
+        self.alive = True
         self.type = "background"
-        self.image = pygame.image.load("resources/background.png")
-        self.x = 0
-        self.y = 0
-        self.y2 = -self.image.get_height()
+        self.death_ticker = None
+        self.position = point.Point(x_start, y_start)
+        self.renderer = renderer.SpriteRenderer(self, "background", ["main"])
+        self.position1 = point.Point(x_start, - self.renderer.images["main"].get_height())
 
-    # RUN CORE LOGIC, x, y POSITIONS
+    # RUN CORE LOGIC FIRST, x, y POSITIONS
     def run(self):
-        pass
+        self.position.add_vector(0, 5)
+        self.position1.add_vector(0, 5)
+        if self.position1.y >= 0:
+            self.position.y = - 5
+            self.position1.y = -self.renderer.images["main"].get_height()
 
     # HANDLE ONLY DRAWINGS ON MAP
     def draw(self, screen):
-        screen.blit(self.image, (self.x , self. y))
-        screen.blit(self.image, (self.x , self. y2))
-        self.y += 5
-        self.y2 += 5
-        if self.y2 >= 0:
-            self.y = 0
-            self.y2 = -self.image.get_height()
+        self.renderer.draw(screen, self.position)
+        self.renderer.draw(screen, self.position1)

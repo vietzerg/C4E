@@ -1,6 +1,6 @@
 import pygame
 import enemy
-import bullet
+import playerbullet
 import time
 
 # HANDLE THE RUNNING AND DRAWING OF ALL GAME OBJECTS
@@ -51,22 +51,33 @@ class LevelManager:
         self.level = 0
 
     def generate_enemies(self, screen, n):
-        first_enemy = enemy.Enemy(screen.get_width() / 2, -10)
+        first_enemy = enemy.Enemy(screen.get_width() / 2, -5)
         gamemanager.add(first_enemy)
         for i in range(1, n):
-            left_enemy = enemy.Enemy(screen.get_width () / 2 - i*first_enemy.image.get_width(), -10)
+            left_enemy = enemy.Enemy(screen.get_width () / 2 - i*first_enemy.renderer.images["main"].get_width(), -5)
             gamemanager.add(left_enemy)
         for i in range(1, n):
-            right_enemy = enemy.Enemy(screen.get_width () / 2 + i*first_enemy.image.get_width(), -10)
+            right_enemy = enemy.Enemy(screen.get_width () / 2 + i*first_enemy.renderer.images["main"].get_width(), -5)
             gamemanager.add(right_enemy)
 
     # CHECK IF BULLET HITS A PLANE
     def check_hit(self):
-        for bullet in gamemanager.bullets:
-            for plane in gamemanager.planes:
-                if bullet.x >= plane.x and bullet.x <= plane.x + plane.image.get_width() and bullet.y >= plane.y and bullet.y <= plane.y + plane.image.get_height():
-                    gamemanager.remover(bullet)
-                    plane.alive = False
+#        for bullet in gamemanager.bullets:
+#            for plane in gamemanager.planes:
+#                if bullet.x >= plane.x and bullet.x <= plane.x + plane.image.get_width() and bullet.y >= plane.y and bullet.y <= plane.y + plane.image.get_height():
+#                    gamemanager.remover(bullet)
+#                    plane.alive = False
+        pass
+
+#    def cleanup(self):
+#        for plane in gamemanager.planes:
+#            if plane.dead_ticker == 5 and plane.alive == False:
+#                gamemanager.remover(plane)
+#            elif plane.position.y > 800:
+#                gamemanager.remover(plane)
+#        for bullet in gamemanager.bullets:
+#            if bullet.y < 0 or bullet.y > 800:
+#                gamemanager.remover(bullet)
 
 
 gamemanager = GameManager()
