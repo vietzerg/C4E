@@ -77,7 +77,7 @@ Ví dụ:
 <!DOCTYPE html>
 <html>
 <head>
-	<title>"Testing HTML</title>
+	<title>"Testing HTML"</title>
 </head>
 <body>
 <a href="http://techkids.vn/">Visit Techkids</a>
@@ -134,7 +134,7 @@ Ví dụ:
 </body>
 </html>
 
-<a href="">Source code</a>
+<a href="https://github.com/vietzerg/C4E/blob/master/Web/qx.html">Source code</a>
  
  
  
